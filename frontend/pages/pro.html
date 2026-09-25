@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHOPORA PRO — Amazon Luxury Stores & Exclusive Member Privileges</title>
+  <meta name="description" content="Discover SHOPORA PRO & The Luxury Pavilion. Curated haute horlogerie, audiophile tech, designer leather, White-Glove delivery, and 30-day risk-free trial." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    :root {
+      --luxury-bg: #090a0f;
+      --luxury-card: #12141c;
+      --luxury-card-hover: #181b26;
+      --luxury-border: rgba(212, 175, 55, 0.22);
+      --luxury-border-glow: rgba(212, 175, 55, 0.55);
+      --gold-primary: #d4af37;
+      --gold-light: #fef08a;
+      --gold-muted: #b89329;
+      --gold-gradient: linear-gradient(135deg, #fce98a 0%, #d4af37 50%, #aa8210 100%);
+      --gold-dark-grad: linear-gradient(135deg, #241d08 0%, #171305 100%);
+      --obsidian-grad: linear-gradient(145deg, #11131c 0%, #090a0f 100%);
+      --text-pearl: #f8fafc;
+      --text-silver: #94a3b8;
+    }
+
+    body {
+      background-color: #07080c;
+      color: var(--text-pearl);
+    }
+
+    /* Top Luxury Marquee */
+    .luxury-top-strip {
+      background: linear-gradient(90deg, #181307 0%, #291e05 50%, #181307 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 8px 0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fef08a;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .luxury-top-strip span {
+      margin: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Luxury Hero */
+    .luxury-hero-container {
+      position: relative;
+      border-radius: 24px;
+      background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+                  linear-gradient(145deg, #12141e 0%, #0a0b12 50%, #050609 100%);
+      border: 1px solid var(--luxury-border);
+      padding: 70px 50px;
+      margin: 30px auto 48px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.08);
+    }
+    .luxury-hero-container::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+    .luxury-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #fef08a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+    }
+    .luxury-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #fef08a 45%, #d4af37 80%, #b89329 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      max-width: 820px;
+    }
+    .luxury-hero-subtitle {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+    .luxury-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-gold-luxury {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 15px 36px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-gold-luxury:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.55);
+      filter: brightness(1.06);
+    }
+    .btn-outline-gold {
+      background: transparent;
+      color: #fef08a;
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-outline-gold:hover {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: #d4af37;
+      color: #ffffff;
+    }
+
+    /* Active Pro Member Banner */
+    .pro-active-banner-luxury {
+      display: none;
+      background: linear-gradient(135deg, #171b26 0%, #0d0f17 100%);
+      border: 1.5px solid #d4af37;
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-bottom: 40px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .pro-active-banner-luxury::before {
+      content: '👑';
+      position: absolute;
+      right: 20px;
+      bottom: -20px;
+      font-size: 7rem;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    /* Curated Luxury Vault Section */
+    .luxury-vault-section {
+      margin: 60px auto;
+    }
+    .luxury-section-head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .luxury-sub-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: #d4af37;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .luxury-main-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .luxury-desc {
+      font-size: 1rem;
+      color: #94a3b8;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filter Pills */
+    .luxury-filter-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 28px 0 40px;
+    }
+    .luxury-filter-btn {
+      background: #11131a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .luxury-filter-btn:hover {
+      background: #191c28;
+      color: #ffffff;
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .luxury-filter-btn.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: #d4af37;
+      color: #fef08a;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Luxury Product Cards Grid */
+    .luxury-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+    .luxury-product-card {
+      background: var(--luxury-card);
+      border: 1px solid var(--luxury-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .luxury-product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--luxury-border-glow);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.18);
+    }
+    .luxury-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background: #090a0f;
+      overflow: hidden;
+    }
+    .luxury-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .luxury-product-card:hover .luxury-img-wrapper img {
+      transform: scale(1.08);
+    }
+    .luxury-brand-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(10, 11, 16, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #fef08a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.725rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .luxury-white-glove-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(18, 20, 28, 0.9);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e2e8f0;
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .luxury-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .luxury-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .luxury-card-craft {
+      font-size: 0.825rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .luxury-price-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .luxury-public-price {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+    .luxury-pro-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fef08a;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .luxury-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-card-examine {
+      background: #181c28;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 9px;
+      font-size: 0.825rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-card-examine:hover {
+      background: #232838;
+      color: #ffffff;
+      border-color: #d4af37;
+    }
+    .btn-card-bag {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      border: none;
+      border-radius: 8px;
+      padding: 9px;
+      font-size: 0.825rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-card-bag:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+    }
+
+    /* The 4 Pillars / Amazon Luxury Services */
+    .luxury-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-bottom: 60px;
+    }
+    .luxury-service-card {
+      background: var(--luxury-card);
+      border: 1px solid var(--luxury-border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+    .luxury-service-card:hover {
+      border-color: #d4af37;
+      transform: translateY(-3px);
+    }
+    .luxury-service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .luxury-service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .luxury-service-desc {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* Unboxing Showcase */
+    .unboxing-banner {
+      background: linear-gradient(145deg, #10121a 0%, #06070a 100%);
+      border: 1px solid var(--luxury-border);
+      border-radius: 22px;
+      padding: 44px;
+      margin-bottom: 60px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .unboxing-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .unboxing-step {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 22px;
+      position: relative;
+    }
+    .unboxing-step-num {
+      position: absolute;
+      top: -10px;
+      left: 18px;
+      background: #d4af37;
+      color: #0b0c10;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 9999px;
+    }
+
+    /* Membership Plans Section (Dark Luxury Theme) */
+    .luxury-plans-section {
+      margin-bottom: 60px;
+    }
+    .luxury-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+    .luxury-plan-card {
+      background: var(--luxury-card);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .luxury-plan-card:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      transform: translateY(-4px);
+    }
+    .luxury-plan-card.featured {
+      border-color: #d4af37;
+      background: linear-gradient(180deg, #181b26 0%, #10121a 100%);
+      box-shadow: 0 16px 40px -10px rgba(212, 175, 55, 0.25);
+    }
+    .plan-badge-top {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-family: 'Cinzel', serif;
+      font-size: 0.725rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Comparison Table (Dark Luxury Theme) */
+    .luxury-table-wrap {
+      background: var(--luxury-card);
+      border: 1px solid var(--luxury-border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    .luxury-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .luxury-table th, .luxury-table td {
+      padding: 18px 26px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.95rem;
+    }
+    .luxury-table th {
+      background: #0d0f17;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: #fef08a;
+      text-transform: uppercase;
+    }
+    .luxury-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Quick View Modal */
+    .luxury-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 5, 8, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .luxury-modal-dialog {
+      background: #11131c;
+      border: 1.5px solid #d4af37;
+      border-radius: 24px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.2);
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #cbd5e1;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: #d4af37;
+      color: #000;
+    }
+
+    /* VIP Concierge Floating Button & Drawer */
+    .vip-concierge-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 14px 22px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5), 0 4px 12px rgba(0, 0, 0, 0.5);
+      border: 1px solid #fff;
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.25s ease;
+    }
+    .vip-concierge-fab:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 14px 38px rgba(212, 175, 55, 0.65);
+    }
+    .concierge-drawer {
+      position: fixed;
+      bottom: 95px;
+      right: 28px;
+      width: 380px;
+      background: #11131c;
+      border: 1.5px solid #d4af37;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.2);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: drawerUp 0.25s ease;
+    }
+    @keyframes drawerUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .concierge-header {
+      background: linear-gradient(135deg, #1b1f2e 0%, #12141d 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .concierge-body {
+      padding: 18px;
+      height: 320px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.875rem;
+    }
+    .chat-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.45;
+    }
+    .chat-bubble.assistant {
+      background: #1a1e2b;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: #e2e8f0;
+      align-self: flex-start;
+    }
+    .chat-bubble.user {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-weight: 600;
+      align-self: flex-end;
+    }
+    .concierge-footer {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      gap: 8px;
+    }
+    .concierge-input {
+      flex: 1;
+      background: #090a0f;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 9999px;
+      padding: 8px 14px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .concierge-send {
+      background: var(--gold-gradient);
+      border: none;
+      color: #000;
+      font-weight: 800;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .luxury-hero-container {
+        padding: 40px 24px;
+      }
+      .luxury-hero-title {
+        font-size: 2.2rem;
+      }
+      .concierge-drawer {
+        right: 12px;
+        left: 12px;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Luxury Marquee -->
+  <div class="luxury-top-strip">
+    <span>✦ Guaranteed Authenticity Certification</span>
+    <span>•</span>
+    <span>🧤 White-Glove Hand Courier Delivery</span>
+    <span>•</span>
+    <span>💎 Complimentary Transit Vault Insurance</span>
+    <span>•</span>
+    <span>⚡ 30-Day Free Trial Available</span>
+  </div>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container">
+
+    <!-- Active Membership Banner (Visible for authenticated Pro members) -->
+    <div class="pro-active-banner-luxury" id="active-pro-banner">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span style="font-size: 1.8rem;">👑</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: #fef08a; margin: 0;">
+              SHOPORA PRO Member Privileges Active
+            </h2>
+            <span style="font-size: 0.75rem; background: #16a34a; color: #ffffff; font-weight: 800; padding: 3px 12px; border-radius: 9999px;">
+              VIP ACTIVE
+            </span>
+          </div>
+          <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; margin-bottom: 14px;" id="pro-expiry-text">
+            Your Pro membership is active. You enjoy 100% Free Lightning Express Delivery, White-Glove luxury courier dispatch, and extra 5% member savings on every purchase.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.85rem; color: #d4af37; font-weight: 700; flex-wrap: wrap;">
+            <span id="pro-days-left">⚡ 30 Days Remaining</span>
+            <span>•</span>
+            <span>Plan: <strong style="color: #ffffff;" id="pro-current-plan">30-Day Trial</strong></span>
+            <span>•</span>
+            <span>White-Glove Status: <strong style="color: #34d399;">Unlocked</strong></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a href="#luxury-vault" class="btn-gold-luxury" style="padding: 10px 22px; font-size: 0.875rem;">
+            Explore Luxury Vault &darr;
+          </a>
+          <button type="button" class="btn btn-outline" id="cancel-pro-sub-btn" style="color: #fca5a5; border-color: #f87171; font-size: 0.85rem; padding: 10px 18px;">
+            Cancel Pro
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Luxury Hero Section (Amazon Luxury Stores aesthetic) -->
+    <section class="luxury-hero-container">
+      <div class="luxury-badge-pill">
+        <span>✦</span>
+        <span>THE LUXURY PAVILION &bull; SHOPORA PRO</span>
+      </div>
+
+      <h1 class="luxury-hero-title">
+        Curated Haute Luxury.<br />White-Glove Delivery Experience.
+      </h1>
+
+      <p class="luxury-hero-subtitle">
+        Step inside SHOPORA PRO's premier luxury boutique. Experience iconic timepieces, audiophile acoustics, German precision optics, and bespoke leather from the world's most revered maisons. Includes certified authenticity, zero delivery fees, and 24/7 dedicated concierge styling.
+      </p>
+
+      <div class="luxury-hero-actions">
+        <button type="button" class="btn-gold-luxury" id="hero-start-trial-btn">
+          <span>⚡</span>
+          <span>Start 30-Day Free Trial (₹0 Today)</span>
+        </button>
+
+        <a href="#luxury-vault" class="btn-outline-gold">
+          <span>Examine Curated Pieces</span>
+          <span>&rarr;</span>
+        </a>
+
+        <span style="font-size: 0.85rem; color: #94a3b8; margin-left: 8px;">
+          ✓ Instant 1-click activation &bull; Cancel anytime
+        </span>
+      </div>
+    </section>
+
+    <!-- The 4 Pillars of Amazon Luxury Service -->
+    <section class="luxury-services-grid">
+      <div class="luxury-service-card">
+        <div class="luxury-service-icon">🧤</div>
+        <h3 class="luxury-service-title">White-Glove Delivery</h3>
+        <p class="luxury-service-desc">
+          Hand-delivered by uniformed couriers in velvet-lined signature packaging. Features secure one-time PIN handoff and flexible delivery windows.
+        </p>
+      </div>
+
+      <div class="luxury-service-card">
+        <div class="luxury-service-icon">🛡️</div>
+        <h3 class="luxury-service-title">Certificate of Authenticity</h3>
+        <p class="luxury-service-desc">
+          Every timepiece, camera, and luxury flacon includes physical serial certification, manufacturer warranty, and tamper-proof hologram seal.
+        </p>
+      </div>
+
+      <div class="luxury-service-card">
+        <div class="luxury-service-icon">💎</div>
+        <h3 class="luxury-service-title">Transit Vault Insurance</h3>
+        <p class="luxury-service-desc">
+          Full transit protection up to ₹10,00,000 included at zero additional cost for all SHOPORA PRO members on high-value consignments.
+        </p>
+      </div>
+
+      <div class="luxury-service-card">
+        <div class="luxury-service-icon">💬</div>
+        <h3 class="luxury-service-title">Private Concierge Stylist</h3>
+        <p class="luxury-service-desc">
+          Direct private access to Genevieve &amp; our luxury concierge team for bespoke styling advice, rare edition sourcing, and gift wrapping.
+        </p>
+      </div>
+    </section>
+
+    <!-- Curated Luxury Vault Section (Amazon Luxury Products Showcase) -->
+    <section class="luxury-vault-section" id="luxury-vault">
+      <div class="luxury-section-head">
+        <div class="luxury-sub-heading">Curated Collection</div>
+        <h2 class="luxury-main-heading">The Amazon Luxury Vault</h2>
+        <p class="luxury-desc">
+          Examine iconic pieces from Rolex, Cartier, Leica, Bang &amp; Olufsen, and Bottega Veneta. Exclusive member pricing automatically applies at checkout.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="luxury-filter-nav" id="luxury-filter-nav">
+        <button class="luxury-filter-btn active" data-category="all">✦ All Masterpieces</button>
+        <button class="luxury-filter-btn" data-category="watches">⌚ Haute Horlogerie</button>
+        <button class="luxury-filter-btn" data-category="audiophile">🎧 Audiophile &amp; Tech</button>
+        <button class="luxury-filter-btn" data-category="leather">👜 Designer Leather</button>
+        <button class="luxury-filter-btn" data-category="parfumerie">🧴 Haute Parfumerie</button>
+      </div>
+
+      <!-- Dynamic Luxury Products Container -->
+      <div class="luxury-products-grid" id="luxury-products-container">
+        <!-- Injected via pro.js from /api/products/luxury -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--gold-primary);">
+          <div style="font-size: 2rem; margin-bottom: 12px;">👑</div>
+          <p>Unlocking The Curated Luxury Vault...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Unboxing Experience -->
+    <section class="unboxing-banner">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="luxury-sub-heading">The Art of Presentation</div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px;">
+          The Signature Unboxing Experience
+        </h2>
+        <p style="font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">
+          When purchasing through SHOPORA PRO, receiving your parcel is as exquisite as the item itself.
+        </p>
+      </div>
+
+      <div class="unboxing-steps-grid">
+        <div class="unboxing-step">
+          <div class="unboxing-step-num">STEP 01</div>
+          <div style="font-size: 1.8rem; margin: 8px 0 12px;">📦</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Obsidian Gift Box</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+            Heavyweight matte black rigid presentation box with gold foil stamping and black grosgrain ribbon.
+          </p>
+        </div>
+
+        <div class="unboxing-step">
+          <div class="unboxing-step-num">STEP 02</div>
+          <div style="font-size: 1.8rem; margin: 8px 0 12px;">🧣</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Velvet Inlay Cushion</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+            Custom-molded Italian velvet bedding protects your piece in climate-controlled transit.
+          </p>
+        </div>
+
+        <div class="unboxing-step">
+          <div class="unboxing-step-num">STEP 03</div>
+          <div style="font-size: 1.8rem; margin: 8px 0 12px;">📜</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Provenance Dossier</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+            Wax-sealed envelope containing the physical certificate of authenticity, serial registration, and warranty.
+          </p>
+        </div>
+
+        <div class="unboxing-step">
+          <div class="unboxing-step-num">STEP 04</div>
+          <div style="font-size: 1.8rem; margin: 8px 0 12px;">🔑</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Security PIN Handoff</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+            Delivered directly to your hands with SMS/App one-time security authentication.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section class="luxury-plans-section" id="pro-plans">
+      <div class="luxury-section-head">
+        <div class="luxury-sub-heading">Choose Your Tier</div>
+        <h2 class="luxury-main-heading">SHOPORA PRO Membership</h2>
+        <p class="luxury-desc">Select your preferred membership option. All plans include full White-Glove delivery privileges.</p>
+      </div>
+
+      <div class="luxury-pricing-grid">
+        <!-- 30-Day Free Trial -->
+        <div class="luxury-plan-card featured">
+          <div class="plan-badge-top">RECOMMENDED</div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: #d4af37; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">
+            30-Day Risk-Free
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 12px;">Free Trial</h3>
+          <div style="font-size: 2.4rem; font-weight: 800; color: #fef08a; margin-bottom: 16px;">
+            ₹0 <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 500;">for 30 days</span>
+          </div>
+          <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.5; margin-bottom: 24px;">
+            Complete access to all luxury vault perks, free express delivery, and 5% checkout savings.
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin: 0 0 28px; flex: 1; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> 100% Free Lightning Express &amp; White-Glove Delivery
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Extra 5% Member Savings on Entire Order
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Full Access to The Curated Luxury Vault
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> 24/7 Dedicated Concierge &amp; Private Stylist
+            </li>
+          </ul>
+
+          <button type="button" class="btn-gold-luxury activate-plan-btn" data-plan="trial" style="width: 100%; justify-content: center; padding: 13px;">
+            Start 30-Day Free Trial
+          </button>
+        </div>
+
+        <!-- Monthly Plan -->
+        <div class="luxury-plan-card">
+          <div style="font-size: 0.8rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">
+            Month-to-Month
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 12px;">Pro Monthly</h3>
+          <div style="font-size: 2.4rem; font-weight: 800; color: #fff; margin-bottom: 16px;">
+            ₹199 <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 500;">/ month</span>
+          </div>
+          <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.5; margin-bottom: 24px;">
+            Flexible luxury membership with no long-term contract. Cancel whenever you wish.
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin: 0 0 28px; flex: 1; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Free Lightning Express Delivery
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Extra 5% Member Savings at Checkout
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Transit Vault Insurance Included
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Early Access to Flash Sales
+            </li>
+          </ul>
+
+          <button type="button" class="btn-outline-gold activate-plan-btn" data-plan="monthly" style="width: 100%; justify-content: center; padding: 13px;">
+            Join for ₹199 / Month
+          </button>
+        </div>
+
+        <!-- Annual VIP Plan -->
+        <div class="luxury-plan-card">
+          <div style="font-size: 0.8rem; font-weight: 800; color: #34d399; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">
+            Best Value (Save 58%)
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 12px;">Annual VIP Pro</h3>
+          <div style="font-size: 2.4rem; font-weight: 800; color: #fff; margin-bottom: 16px;">
+            ₹999 <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 500;">/ year (₹83/mo)</span>
+          </div>
+          <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.5; margin-bottom: 24px;">
+            Full year of comprehensive luxury privileges. Pays for itself on your very first order!
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin: 0 0 28px; flex: 1; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> 365 Days Unlimited Express &amp; White-Glove
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Guaranteed 5% Off Every Catalog Item
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Direct Private WhatsApp Stylist Line
+            </li>
+            <li style="font-size: 0.875rem; color: #e2e8f0; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #34d399; font-weight: 800;">✓</span> Complimentary Bespoke Luxury Gift Wrapping
+            </li>
+          </ul>
+
+          <button type="button" class="btn-outline-gold activate-plan-btn" data-plan="annual" style="width: 100%; justify-content: center; padding: 13px;">
+            Join for ₹999 / Year
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="luxury-table-wrap">
+      <table class="luxury-table">
+        <thead>
+          <tr>
+            <th>Privilege &amp; Service</th>
+            <th style="color: #94a3b8;">Standard Customer</th>
+            <th style="color: #d4af37; background: rgba(212, 175, 55, 0.08);">👑 SHOPORA PRO Member</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>White-Glove Courier Delivery</strong></td>
+            <td style="color: #94a3b8;">Not Available</td>
+            <td style="color: #34d399; font-weight: 800; background: rgba(212, 175, 55, 0.04);">FREE Hand Delivery</td>
+          </tr>
+          <tr>
+            <td><strong>Express Lightning Shipping</strong></td>
+            <td style="color: #94a3b8;">₹149 / order</td>
+            <td style="color: #34d399; font-weight: 800; background: rgba(212, 175, 55, 0.04);">FREE Always</td>
+          </tr>
+          <tr>
+            <td><strong>Instant Member Discount</strong></td>
+            <td style="color: #64748b;">None</td>
+            <td style="color: #fef08a; font-weight: 800; background: rgba(212, 175, 55, 0.04);">Extra 5% Off Every Item</td>
+          </tr>
+          <tr>
+            <td><strong>Transit Vault Insurance</strong></td>
+            <td style="color: #64748b;">Optional ₹299</td>
+            <td style="color: #34d399; font-weight: 800; background: rgba(212, 175, 55, 0.04);">Complimentary (Up to ₹10 Lakh)</td>
+          </tr>
+          <tr>
+            <td><strong>Return Window</strong></td>
+            <td>7 Days</td>
+            <td style="color: #fef08a; font-weight: 700; background: rgba(212, 175, 55, 0.04);">30 Days Doorstep Exchange</td>
+          </tr>
+          <tr>
+            <td><strong>Concierge Support</strong></td>
+            <td>Standard Email Help</td>
+            <td style="color: #d4af37; font-weight: 700; background: rgba(212, 175, 55, 0.04);">24/7 Dedicated Luxury Stylist</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- Luxury Quick View Modal -->
+  <div class="luxury-modal-overlay" id="luxury-examine-modal">
+    <div class="luxury-modal-dialog" id="luxury-modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <div id="luxury-modal-content">
+        <!-- Injected via pro.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- VIP 1-Click Enrollment Modal (Solves guest activation cleanly) -->
+  <div class="luxury-modal-overlay" id="vip-enrollment-modal">
+    <div class="luxury-modal-dialog" style="max-width: 480px; padding: 36px; text-align: center;">
+      <button class="modal-close-btn" id="enroll-modal-close-btn">&times;</button>
+      <div style="font-size: 3rem; margin-bottom: 12px;">👑</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; margin-bottom: 10px;">
+        Activate SHOPORA PRO
+      </h3>
+      <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; margin-bottom: 24px;">
+        Experience White-Glove delivery, extra 5% member discount, and 30 days of risk-free luxury privileges.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Option 1: Instant Demo Login & Activation -->
+        <button type="button" class="btn-gold-luxury" id="demo-quick-activate-btn" style="width: 100%; justify-content: center; padding: 14px;">
+          ⚡ 1-Click Instant Demo Activation
+        </button>
+
+        <!-- Option 2: Sign in with existing credentials -->
+        <a href="login.html?redirect=pro.html" class="btn-outline-gold" style="width: 100%; justify-content: center; padding: 12px;">
+          Sign In with Existing Account
+        </a>
+
+        <!-- Option 3: Register -->
+        <a href="register.html?redirect=pro.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: underline; margin-top: 6px;">
+          New shopper? Create free account &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating VIP Concierge Widget -->
+  <div class="vip-concierge-fab" id="concierge-fab-btn">
+    <span style="font-size: 1.2rem;">👑</span>
+    <span>VIP Concierge</span>
+  </div>
+
+  <!-- Concierge Chat Drawer -->
+  <div class="concierge-drawer" id="concierge-drawer">
+    <div class="concierge-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #000; font-weight: 800;">
+          G
+        </div>
+        <div>
+          <strong style="color: #fff; font-size: 0.9rem; display: block;">Genevieve</strong>
+          <span style="font-size: 0.75rem; color: #34d399;">● Senior Luxury Stylist</span>
+        </div>
+      </div>
+      <button id="close-concierge-btn" style="background: none; border: none; color: #94a3b8; font-size: 1.4rem; cursor: pointer;">&times;</button>
+    </div>
+
+    <div class="concierge-body" id="concierge-chat-body">
+      <div class="chat-bubble assistant">
+        Bonjour. I am Genevieve, your dedicated SHOPORA PRO Luxury Stylist. How may I assist you with our curated vault pieces or White-Glove delivery today?
+      </div>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+        <button class="quick-chip-btn" data-query="How does White-Glove delivery work?" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #fef08a; font-size: 0.75rem; padding: 4px 10px; border-radius: 9999px; cursor: pointer;">
+          🧤 White-Glove Delivery?
+        </button>
+        <button class="quick-chip-btn" data-query="Are timepieces 100% certified authentic?" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #fef08a; font-size: 0.75rem; padding: 4px 10px; border-radius: 9999px; cursor: pointer;">
+          📜 Authenticity Guarantee?
+        </button>
+        <button class="quick-chip-btn" data-query="How do I activate the 30-day trial?" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #fef08a; font-size: 0.75rem; padding: 4px 10px; border-radius: 9999px; cursor: pointer;">
+          ⚡ 30-Day Free Trial?
+        </button>
+      </div>
+    </div>
+
+    <div class="concierge-footer">
+      <input type="text" class="concierge-input" id="concierge-input" placeholder="Inquire about luxury pieces..." />
+      <button class="concierge-send" id="concierge-send-btn">&uarr;</button>
+    </div>
+  </div>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pro.js"></script>
+</body>
+</html>

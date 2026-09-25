@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHOPORA — Discover More. Shop Smarter.</title>
+  <meta name="description" content="SHOPORA is your premier modern shopping platform. Discover top offers, daily deals, luxury collections, trending technology, and authentic lifestyle goods." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- SECTION 1 — SMART HEADER -->
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <!-- SECTION 2 — HERO PROMOTIONAL BANNER CAROUSEL (Dynamic from MongoDB /api/offers/active) -->
+    <section class="top-offers-section" id="top-offers-section">
+      <div class="container">
+        <div class="offers-slider-wrap" id="offers-slider-wrapper">
+          <div class="offers-slider-track" id="offers-slider-track">
+            <!-- Dynamic slides populated by home.js -->
+          </div>
+          <!-- Arrow Controls -->
+          <button class="offers-arrow-btn offers-arrow-prev" id="offers-prev-btn" aria-label="Previous Offer">‹</button>
+          <button class="offers-arrow-btn offers-arrow-next" id="offers-next-btn" aria-label="Next Offer">›</button>
+          <!-- Dots Container -->
+          <div class="offers-dots-wrap" id="offers-dots-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2.5 — OFFER STRIP (Compact Horizontal Discovery Chips) -->
+    <section class="offer-strip-section" id="offer-strip-section">
+      <div class="container">
+        <div class="offer-strip-scroll" id="offer-strip-chips">
+          <a href="pages/products.html?deal=flash" class="offer-chip-card">
+            <span class="offer-chip-icon">⚡</span>
+            <span>Flash Sale</span>
+            <span class="offer-chip-badge">Up to 40%</span>
+          </a>
+          <a href="pages/products.html?isDeal=true" class="offer-chip-card">
+            <span class="offer-chip-icon">🔥</span>
+            <span>Limited Deals</span>
+            <span class="offer-chip-badge">Today Only</span>
+          </a>
+          <a href="pages/products.html?hasDiscount=true" class="offer-chip-card">
+            <span class="offer-chip-icon">💙</span>
+            <span>Bank Offers</span>
+            <span class="offer-chip-badge blue">Instant 10%</span>
+          </a>
+          <a href="pages/products.html?isPremium=true" class="offer-chip-card">
+            <span class="offer-chip-icon">✨</span>
+            <span>Premium Picks</span>
+            <span class="offer-chip-badge gold">Select</span>
+          </a>
+          <a href="pages/products.html?isNew=true" class="offer-chip-card">
+            <span class="offer-chip-icon">🎁</span>
+            <span>Special Offers</span>
+            <span class="offer-chip-badge">New Dropped</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — REAL-TIME LIVE ACTIVITY & SOCIAL PROOF BANNER -->
+    <div class="social-proof-banner" id="social-proof-banner">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0;">
+        <div class="social-proof-content">
+          <span class="live-viewers-dot" style="margin-bottom: 0;"></span>
+          <span id="social-proof-ticker-text">🔥 <strong>Live Activity:</strong> Over 1,420 shoppers browsing verified deals right now</span>
+        </div>
+        <div style="font-size: 0.775rem; color: #93c5fd; display: flex; align-items: center; gap: 14px;">
+          <span>✦ <strong>SHOPORA Assured</strong> 100% Original</span>
+          <span class="hide-mobile">⚡ 24-Hr Express Dispatch</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 — OFFER PRODUCTS (⚡ Electronics & Flash Deals with Live Countdown) -->
+    <section class="offer-product-section" id="flash-offer-products-section">
+      <div class="container">
+        <div class="flash-deals-header-box">
+          <div class="flash-title-group">
+            <div class="flash-fire-icon">⚡</div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h2 class="section-title" style="font-size: 1.4rem;">Flash Tech Deals</h2>
+                <span class="section-badge red">Expiring Soon</span>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                Save more on everyday flagship tech &amp; smart computing
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <!-- Real Countdown based on offer.endTime -->
+            <div class="countdown-box" id="flash-countdown-box">
+              <span style="color: #64748b; font-size: 0.825rem;">Ends in:</span>
+              <div class="countdown-digit" id="timer-hours">18</div>
+              <span class="countdown-sep">:</span>
+              <div class="countdown-digit" id="timer-minutes">42</div>
+              <span class="countdown-sep">:</span>
+              <div class="countdown-digit" id="timer-seconds">15</div>
+            </div>
+            <a href="pages/products.html?deal=electronics" class="view-all-link">VIEW ALL &rarr;</a>
+          </div>
+        </div>
+
+        <div class="product-carousel-track" id="flash-offer-products-track">
+          <!-- Populated from Offer products via home.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 — DEAL OF THE DAY + DEAL PRODUCTS -->
+    <div id="deal-products-container"></div>
+
+    <!-- SECTION 6 — SHOPORA SELECT (PREMIUM COLLECTION) -->
+    <section class="shopora-select-section" id="shopora-select-section">
+      <div class="container">
+        <div class="shopora-select-card">
+          <div class="shopora-select-header">
+            <div>
+              <div class="select-gold-badge">👑 SHOPORA SELECT</div>
+              <h2 class="select-title">Premium products, thoughtfully selected.</h2>
+              <p class="select-subtitle">Flagship titanium craftsmanship, audiophile acoustics, and high-performance hardware.</p>
+            </div>
+            <a href="pages/products.html?isPremium=true" class="btn-select-explore">
+              EXPLORE COLLECTION &rarr;
+            </a>
+          </div>
+
+          <div class="product-carousel-track" id="select-products-track">
+            <!-- Populated via home.js from /api/products/premium -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 — TRENDING NOW -->
+    <div id="trending-products-container"></div>
+
+    <!-- SECTION 8 — NEW ARRIVALS -->
+    <div id="new-arrivals-container"></div>
+
+    <!-- SECTION 8.5 — SHOPORA PRO VIP BANNER -->
+    <section class="container" style="margin: 28px auto;">
+      <div style="background: linear-gradient(135deg, #090e17 0%, #1e293b 50%, #172554 100%); border-radius: 16px; padding: 28px 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.3); border: 1px solid rgba(245, 158, 11, 0.3); position: relative; overflow: hidden;">
+        <div style="position: absolute; right: -15px; bottom: -25px; font-size: 8rem; opacity: 0.05; pointer-events: none;">👑</div>
+        <div style="max-width: 620px;">
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fbbf24; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 10px;">
+            👑 SHOPORA PRO EXCLUSIVE
+          </div>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; letter-spacing: -0.02em;">
+            Get Free Lightning Express Delivery &amp; Extra 5% Off Every Order
+          </h2>
+          <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5; margin: 0;">
+            Join SHOPORA PRO today for zero delivery fees, VIP concierge support, and early access to mega sales. Try it risk-free.
+          </p>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="pages/pro.html" class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; font-weight: 800; padding: 12px 24px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);">
+            ⚡ Start 30-Day Free Trial
+          </a>
+          <a href="pages/pro.html" class="btn btn-outline" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.25); padding: 12px 20px;">
+            Explore Benefits &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9 — SHOP BY CATEGORY (Visual Category Cards Grid) -->
+    <section class="section-wrapper" id="shop-by-category-section">
+      <div class="container">
+        <div class="section-header" style="border-bottom: none; padding-bottom: 0;">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Shop by Category</h2>
+            <span class="section-badge blue">Explore All Departments</span>
+          </div>
+          <a href="pages/products.html" class="view-all-link">View All Categories &rarr;</a>
+        </div>
+        <div class="category-cards-grid" id="category-cards-grid">
+          <!-- Populated with visual cards via home.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 — BEST SELLERS -->
+    <div id="best-sellers-container"></div>
+
+    <!-- SECTION 11 — PICKED FOR YOU / POPULAR FOR YOU -->
+    <div id="picked-for-you-container"></div>
+
+    <!-- SECTION 12 — SHOPPING BENEFITS STRIP (Compact Visual Cards) -->
+    <section class="benefits-strip-section" id="shopping-benefits-section">
+      <div class="container">
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon-box">🚚</div>
+            <div>
+              <div class="benefit-title">Fast Delivery</div>
+              <div class="benefit-subtitle">Express doorstep dispatch on verified orders</div>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box">🔒</div>
+            <div>
+              <div class="benefit-title">Secure Checkout</div>
+              <div class="benefit-subtitle">256-Bit SSL encryption &amp; certified gateways</div>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box">↩</div>
+            <div>
+              <div class="benefit-title">Easy Returns</div>
+              <div class="benefit-subtitle">30 days doorstep exchange &amp; full refund</div>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box">💬</div>
+            <div>
+              <div class="benefit-title">Customer Support</div>
+              <div class="benefit-subtitle">24/7 dedicated assistance &amp; live order tracking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 13 — SIMPLE COMPACT FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Client Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

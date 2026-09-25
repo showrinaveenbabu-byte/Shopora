@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details — SHOPORA</title>
+  <meta name="description" content="Explore full product specifications, customer reviews, authentic warranties, and express doorstep delivery on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container">
+    <!-- Breadcrumb Navigation -->
+    <div style="font-size: 0.8125rem; color: var(--text-muted); margin: 20px 0 12px; display: flex; gap: 6px; align-items: center;">
+      <a href="../index.html" style="color: var(--primary); font-weight: 600;">Home</a>
+      <span>/</span>
+      <a href="products.html" style="color: var(--primary); font-weight: 600;">Catalog</a>
+      <span>/</span>
+      <span id="breadcrumb-category" style="color: var(--text-muted);">...</span>
+      <span>/</span>
+      <strong id="breadcrumb-title" style="color: var(--text-main); max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Loading...</strong>
+    </div>
+
+    <!-- Product Details Main Grid (Image Gallery Left + Details Right) -->
+    <div class="product-details-container" id="product-details-root">
+      <!-- Loading Skeleton -->
+      <div class="skeleton" style="height: 480px; border-radius: var(--radius-lg);"></div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="skeleton" style="height: 24px; width: 30%;"></div>
+        <div class="skeleton" style="height: 48px; width: 90%;"></div>
+        <div class="skeleton" style="height: 28px; width: 40%;"></div>
+        <div class="skeleton" style="height: 80px; width: 100%;"></div>
+        <div class="skeleton" style="height: 120px; width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Verified Customer Reviews Section -->
+    <section style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 36px; margin-bottom: 40px; box-shadow: var(--shadow-xs);" id="reviews-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Customer Reviews</h2>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Verified purchaser ratings and feedback</p>
+        </div>
+        <button class="btn btn-outline" id="write-review-open-btn">
+          ✍ Write a Customer Review
+        </button>
+      </div>
+
+      <!-- Reviews Summary & List -->
+      <div id="reviews-list-target">
+        <p style="color: var(--text-muted);">Loading customer feedback...</p>
+      </div>
+    </section>
+
+    <!-- Similar Recommended Items -->
+    <section style="margin-bottom: 60px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--text-main);">Similar Recommended Items</h2>
+        <a href="products.html" class="view-all-link">Browse Catalog &rarr;</a>
+      </div>
+      <div class="products-grid" id="related-products-grid"></div>
+    </section>
+  </main>
+
+  <!-- Write Review Modal -->
+  <div id="review-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); max-width: 500px; width: 100%; padding: 28px; position: relative; box-shadow: var(--shadow-xl); animation: slideDown 200ms ease-out;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Write a Customer Review</h3>
+        <button id="close-review-modal" style="font-size: 1.4rem; color: var(--text-subtle); padding: 4px;">&times;</button>
+      </div>
+      <form id="review-form">
+        <div class="form-group">
+          <label class="form-label">Your Rating (1 to 5 Stars)</label>
+          <select id="review-rating-select" class="form-control" required>
+            <option value="5">★★★★★ (5 - Excellent)</option>
+            <option value="4">★★★★☆ (4 - Good)</option>
+            <option value="3">★★★☆☆ (3 - Average)</option>
+            <option value="2">★★☆☆☆ (2 - Poor)</option>
+            <option value="1">★☆☆☆☆ (1 - Very Bad)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Review Headline</label>
+          <input type="text" id="review-title-input" class="form-control" placeholder="e.g. Outstanding performance, truly premium build" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Detailed Comments</label>
+          <textarea id="review-comment-input" class="form-control" rows="4" placeholder="What did you like or dislike? How does it perform day to day?" required></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" id="cancel-review-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit-review-btn">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Sticky Action Bar (Flipkart / Amazon style) -->
+  <div class="mobile-sticky-action-bar" id="mobile-sticky-bar"></div>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/product-details.js"></script>
+</body>
+</html>

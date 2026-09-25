@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — SHOPORA Operations</title>
+  <meta name="description" content="SHOPORA Operations Console, Catalog Management, Inventory, Real-Time Fulfillment, and Analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .admin-tab-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1.5px solid var(--border-subtle);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+    .admin-tab-item {
+      padding: 9px 18px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .admin-tab-item:hover {
+      background: var(--bg-subtle);
+      color: var(--primary);
+      border-color: var(--primary-border);
+    }
+    .admin-tab-item.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 10px var(--primary-glow);
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 180ms ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container page-container">
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+      <div>
+        <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); margin-bottom: 4px;">
+          🛡️ Verified Administrator Operations
+        </div>
+        <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">SHOPORA Admin Console</h1>
+      </div>
+      <div id="admin-header-actions"></div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="admin-tab-bar">
+      <button class="admin-tab-item active" data-tab="overview">📊 Executive Overview</button>
+      <button class="admin-tab-item" data-tab="products">📦 Product Catalog</button>
+      <button class="admin-tab-item" data-tab="categories">🗂️ Categories</button>
+      <button class="admin-tab-item" data-tab="orders">🚚 Order Fulfillment</button>
+      <button class="admin-tab-item" data-tab="users">👥 Customer Accounts</button>
+      <button class="admin-tab-item" data-tab="deals">🏷️ Deals &amp; Offers</button>
+      <button class="admin-tab-item" data-tab="reviews">⭐ Customer Reviews</button>
+    </div>
+
+    <!-- 1. OVERVIEW TAB -->
+    <div class="tab-pane active" id="pane-overview">
+      <div class="admin-stat-grid" id="overview-metrics-grid">
+        <div class="admin-stat-card skeleton" style="height: 100px;"></div>
+        <div class="admin-stat-card skeleton" style="height: 100px;"></div>
+        <div class="admin-stat-card skeleton" style="height: 100px;"></div>
+        <div class="admin-stat-card skeleton" style="height: 100px;"></div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Recent Orders Activity</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Real-time transaction log from MongoDB</p>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order #</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Total Amount</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="overview-orders-tbody">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading recent orders...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2. PRODUCTS TAB -->
+    <div class="tab-pane" id="pane-products">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <span id="products-metric-count" style="font-size: 1rem; font-weight: 700; color: var(--text-main);">Loading products...</span>
+        </div>
+        <button class="btn btn-primary" id="btn-create-product">+ Add New Product</button>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Brand</th>
+              <th>Category</th>
+              <th>Price / Discount</th>
+              <th>Stock</th>
+              <th>Toggles</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-admin-tbody">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading catalog...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. CATEGORIES TAB -->
+    <div class="tab-pane" id="pane-categories">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Taxonomy Categories</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Database-driven store categories</p>
+        </div>
+        <button class="btn btn-primary" id="btn-create-category">+ Add Category</button>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>Slug</th>
+              <th>Description</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="categories-admin-tbody">
+            <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Loading categories...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 4. ORDERS TAB -->
+    <div class="tab-pane" id="pane-orders">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+        <span id="orders-metric-count" style="font-size: 1rem; font-weight: 700; color: var(--text-main);">Loading orders...</span>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <label for="orders-filter-select" style="font-size: 0.85rem; color: var(--text-muted);">Filter Status:</label>
+          <select id="orders-filter-select" class="form-control" style="width: auto; padding: 6px 12px; font-size: 0.85rem;">
+            <option value="All">All Statuses</option>
+            <option value="Order Placed">Order Placed</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Processing">Processing</option>
+            <option value="Packed">Packed</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status Update</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orders-admin-tbody">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading fulfillment list...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5. USERS TAB -->
+    <div class="tab-pane" id="pane-users">
+      <div style="margin-bottom: 20px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Registered Accounts</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Active customers and authorized administrator accounts</p>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Joined Date</th>
+              <th style="text-align: right;">Role Action</th>
+            </tr>
+          </thead>
+          <tbody id="users-admin-tbody">
+            <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Loading user records...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 6. DEALS & OFFERS TAB -->
+    <div class="tab-pane" id="pane-deals">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Active Promotional Deals &amp; Discounts</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Manage product discounts, flash offer countdowns, and promotional ribbon texts</p>
+        </div>
+        <span id="deals-count-display" style="font-weight: 700; color: var(--primary);">Loading deals...</span>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Brand</th>
+              <th>Regular Price</th>
+              <th>Discount (%)</th>
+              <th>Final Deal Price</th>
+              <th>Offer Banner</th>
+              <th>Deal Status</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="deals-admin-tbody">
+            <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading promotional deals...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 7. REVIEWS MODERATION TAB -->
+    <div class="tab-pane" id="pane-reviews">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Customer Feedback &amp; Reviews Moderation</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Inspect ratings and delete inappropriate or abusive customer reviews</p>
+        </div>
+        <span id="reviews-count-display" style="font-weight: 700; color: var(--primary);">Loading reviews...</span>
+      </div>
+
+      <div class="data-table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Customer</th>
+              <th>Rating</th>
+              <th>Feedback &amp; Title</th>
+              <th>Verified Status</th>
+              <th>Date</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="reviews-admin-tbody">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading verified reviews...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Create / Edit Modal -->
+  <div id="product-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); max-width: 640px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 32px; box-shadow: var(--shadow-xl); position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);" id="prod-modal-title">Add New Product</h3>
+        <button id="close-prod-modal-btn" style="font-size: 1.4rem; color: var(--text-subtle); padding: 4px;">&times;</button>
+      </div>
+
+      <form id="product-admin-form">
+        <input type="hidden" id="admin-prod-id" />
+
+        <div class="form-group">
+          <label class="form-label" for="admin-prod-name">Product Name *</label>
+          <input type="text" id="admin-prod-name" class="form-control" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label" for="admin-prod-brand">Brand *</label>
+            <input type="text" id="admin-prod-brand" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="admin-prod-category">Category *</label>
+            <select id="admin-prod-category" class="form-control" required></select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label" for="admin-prod-price">Selling Price (₹) *</label>
+            <input type="number" step="0.01" id="admin-prod-price" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="admin-prod-discount">Discount (%)</label>
+            <input type="number" id="admin-prod-discount" class="form-control" min="0" max="95" value="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="admin-prod-stock">Stock Quantity *</label>
+            <input type="number" id="admin-prod-stock" class="form-control" min="0" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-prod-image">Image URL *</label>
+          <input type="url" id="admin-prod-image" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-prod-desc">Description</label>
+          <textarea id="admin-prod-desc" class="form-control" rows="3"></textarea>
+        </div>
+
+        <!-- Flags -->
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 16px 0;">
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-main); cursor: pointer;">
+            <input type="checkbox" id="admin-prod-premium" style="accent-color: var(--primary);" />
+            <span>👑 SHOPORA Premium</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-main); cursor: pointer;">
+            <input type="checkbox" id="admin-prod-trending" style="accent-color: var(--primary);" />
+            <span>🔥 Trending</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-main); cursor: pointer;">
+            <input type="checkbox" id="admin-prod-deal" style="accent-color: var(--primary);" />
+            <span>⚡ Flash Deal</span>
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" id="cancel-prod-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Category Create / Edit Modal -->
+  <div id="category-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); max-width: 480px; width: 100%; padding: 28px; box-shadow: var(--shadow-xl); position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);" id="cat-modal-title">Create Category</h3>
+        <button id="close-cat-modal-btn" style="font-size: 1.4rem; color: var(--text-subtle); padding: 4px;">&times;</button>
+      </div>
+
+      <form id="category-admin-form">
+        <input type="hidden" id="admin-cat-id" />
+        <div class="form-group">
+          <label class="form-label" for="admin-cat-name">Category Name *</label>
+          <input type="text" id="admin-cat-name" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="admin-cat-icon">Emoji Icon</label>
+          <input type="text" id="admin-cat-icon" class="form-control" placeholder="e.g. 📱" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="admin-cat-desc">Description</label>
+          <textarea id="admin-cat-desc" class="form-control" rows="2"></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" id="cancel-cat-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Client-side Socket.IO & Core Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

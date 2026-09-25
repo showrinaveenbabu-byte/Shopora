@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Checkout — SHOPORA</title>
+  <meta name="description" content="Complete your purchase with address selection, express delivery, and secure payment on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .checkout-step-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-xs);
+    }
+    .checkout-step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .step-number-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+    .step-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .saved-addresses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .address-choice-card {
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      cursor: pointer;
+      background: var(--bg-subtle);
+      transition: all var(--transition-fast);
+    }
+    .address-choice-card:hover {
+      border-color: var(--primary-border);
+    }
+    .address-choice-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+    .payment-option-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all var(--transition-fast);
+    }
+    .payment-option-card:hover {
+      border-color: var(--primary-border);
+    }
+    .payment-option-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+    .checkout-item-mini {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .checkout-item-mini img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container page-container">
+    <!-- Header -->
+    <div style="margin-bottom: 24px;">
+      <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Checkout</h1>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Complete your order with verified address and secure payment</p>
+    </div>
+
+    <!-- 4-Step Progress Stepper -->
+    <div class="checkout-stepper-wrap" id="checkout-stepper">
+      <div class="checkout-step-node active" id="step-node-1">
+        <div class="checkout-step-circle">1</div>
+        <span>Delivery Address</span>
+      </div>
+      <div class="checkout-step-line completed" id="step-line-1"></div>
+      <div class="checkout-step-node completed" id="step-node-2">
+        <div class="checkout-step-circle">✓</div>
+        <span>Express Delivery</span>
+      </div>
+      <div class="checkout-step-line" id="step-line-2"></div>
+      <div class="checkout-step-node" id="step-node-3">
+        <div class="checkout-step-circle">3</div>
+        <span>Payment Method</span>
+      </div>
+      <div class="checkout-step-line" id="step-line-3"></div>
+      <div class="checkout-step-node" id="step-node-4">
+        <div class="checkout-step-circle">4</div>
+        <span>Review Order</span>
+      </div>
+    </div>
+
+    <div class="cart-layout">
+      <!-- Left Steps Column -->
+      <div>
+        <!-- Confirmed Address Summary (Visible when Step 1 is completed) -->
+        <div class="checkout-confirmed-banner" id="confirmed-address-banner">
+          <div class="checkout-confirmed-left">
+            <div class="checkout-confirmed-icon">✓</div>
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;">
+                1. Delivery Address Confirmed
+              </div>
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;" id="confirmed-addr-name"></div>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 3px;" id="confirmed-addr-detail"></div>
+              <div style="font-size: 0.825rem; color: #64748b; margin-top: 2px;" id="confirmed-addr-phone"></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="change-address-btn" style="border-color: var(--primary); color: var(--primary); font-weight: 700; white-space: nowrap;">
+            Change
+          </button>
+        </div>
+
+        <!-- Step 1: Delivery Address Selection & Form -->
+        <div class="checkout-step-box" id="step-1-address-box">
+          <div class="checkout-step-header">
+            <div class="step-number-badge">1</div>
+            <div>
+              <h2 class="step-title">Delivery Address</h2>
+              <p style="font-size: 0.825rem; color: var(--text-muted); margin: 0;">Select a delivery address from your account or add a new verified address</p>
+            </div>
+          </div>
+
+          <!-- Saved Addresses List (Amazon / Flipkart Style) -->
+          <div id="saved-addresses-wrapper">
+            <div id="saved-addresses-container"></div>
+
+            <div class="add-address-trigger-card" id="toggle-new-address-btn">
+              <span style="font-size: 1.3rem; font-weight: 800; line-height: 1;">+</span>
+              <span>Add a new delivery address</span>
+            </div>
+          </div>
+
+          <!-- Collapsible New/Edit Address Form (Hidden by default) -->
+          <div class="collapsible-address-form-wrap" id="collapsible-address-form-wrap">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a;" id="address-form-heading">Add a New Delivery Address</h3>
+              <button type="button" id="close-address-form-btn" style="background: none; border: none; font-size: 1.3rem; color: #94a3b8; cursor: pointer;">&times;</button>
+            </div>
+
+            <form id="address-form">
+              <input type="hidden" id="edit-address-id" value="" />
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-name">Full Name *</label>
+                  <input type="text" id="ship-name" class="form-control" placeholder="e.g. Alex Johnson" required />
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-phone">10-Digit Mobile Number *</label>
+                  <input type="tel" id="ship-phone" class="form-control" placeholder="e.g. +91 98765 43210" required />
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-pincode">Pincode *</label>
+                  <input type="text" id="ship-pincode" class="form-control" placeholder="6-digit pincode" maxlength="6" required />
+                  <div id="chk-pincode-hint" style="font-size: 0.78rem; color: #16a34a; font-weight: 600; margin-top: 4px; display: none;"></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-landmark">Landmark (Optional)</label>
+                  <input type="text" id="ship-landmark" class="form-control" placeholder="e.g. Near Metro Station / Park" />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label" for="ship-street">Flat / House No. / Building / Street Address *</label>
+                <input type="text" id="ship-street" class="form-control" placeholder="e.g. Flat 402, Prestige Palms, 12th Main Road" required />
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-city">City / District *</label>
+                  <input type="text" id="ship-city" class="form-control" placeholder="e.g. Bengaluru" required />
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="ship-state">State / Province *</label>
+                  <input type="text" id="ship-state" class="form-control" placeholder="e.g. Karnataka" required />
+                </div>
+              </div>
+
+              <!-- Address Type (Home vs Work) -->
+              <div style="margin-bottom: 16px;">
+                <label class="form-label">Address Type</label>
+                <div class="address-type-selector">
+                  <div class="address-type-pill selected" data-type="Home">
+                    <span>🏠</span> Home (All-day delivery)
+                  </div>
+                  <div class="address-type-pill" data-type="Work">
+                    <span>🏢</span> Work (10 AM - 5 PM)
+                  </div>
+                </div>
+                <input type="hidden" id="ship-type" value="Home" />
+              </div>
+
+              <!-- Default Checkbox -->
+              <div style="margin-bottom: 20px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-main); cursor: pointer;">
+                  <input type="checkbox" id="ship-is-default" style="accent-color: var(--primary); transform: scale(1.1);" />
+                  <span>Save this address and make it my default delivery address</span>
+                </label>
+              </div>
+
+              <div style="display: flex; gap: 12px;">
+                <button type="submit" class="btn btn-primary" id="save-address-btn" style="padding: 10px 24px; font-weight: 800;">
+                  Save and Deliver Here
+                </button>
+                <button type="button" class="btn btn-outline" id="cancel-new-address-btn">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Step 2: Delivery Speed & Method (Integrated with SHOPORA PRO) -->
+        <div class="checkout-step-box" id="step-2-delivery-box">
+          <div class="checkout-step-header">
+            <div class="step-number-badge">2</div>
+            <div>
+              <h2 class="step-title">Delivery Method &amp; Speed</h2>
+              <p style="font-size: 0.825rem; color: var(--text-muted); margin: 0;">Choose how fast you want your verified order delivered</p>
+            </div>
+          </div>
+
+          <!-- Real-Time Express Dispatch Countdown Banner -->
+          <div class="dispatch-countdown-pill" id="dispatch-countdown-pill">
+            <span class="dispatch-pulse-dot"></span>
+            <span>⚡ Order within <strong id="dispatch-timer-clock">02h 45m 18s</strong> for <strong>Guaranteed Delivery Tomorrow by 2:00 PM!</strong></span>
+          </div>
+
+          <!-- Lightning Express Option (Pro Benefit) -->
+          <label class="delivery-speed-option-card pro-speed selected" id="opt-speed-express">
+            <input type="radio" name="delivery-speed" value="express" checked style="accent-color: #f59e0b; margin-top: 3px; transform: scale(1.15);" />
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <strong style="color: #0f172a; font-size: 0.975rem;">⚡ SHOPORA PRO Lightning Express</strong>
+                <span class="delivery-date-pill express" id="express-date-pill">Tomorrow, by 2:00 PM</span>
+              </div>
+              <div style="font-size: 0.84rem; color: #64748b; margin-top: 4px; line-height: 1.4;">
+                Priority warehouse dispatch with guaranteed next-day delivery and live GPS tracking milestones.
+              </div>
+
+              <!-- Inline Pro Trial Banner for Non-Pro Users -->
+              <div class="pro-trial-inline-cta" id="step2-pro-cta-box">
+                <div>
+                  <p><strong>👑 SHOPORA PRO Privilege</strong></p>
+                  <p style="font-size: 0.78rem;">Get FREE Lightning Express Delivery on this order with 30-Day Free Trial!</p>
+                </div>
+                <button type="button" class="btn btn-warning btn-sm" id="step2-pro-trial-btn" style="font-weight: 800; padding: 6px 14px; font-size: 0.775rem; white-space: nowrap;">
+                  ⚡ Try Pro Free for 30 Days
+                </button>
+              </div>
+            </div>
+            <div style="margin-left: auto; text-align: right;">
+              <div id="express-fee-display" style="font-weight: 800; font-size: 1rem; color: #0f172a;">₹149</div>
+              <div id="express-fee-strikethrough" style="font-size: 0.75rem; color: #94a3b8; text-decoration: line-through; display: none;">₹149</div>
+            </div>
+          </label>
+
+          <!-- Standard Surface Delivery Option -->
+          <label class="delivery-speed-option-card" id="opt-speed-standard">
+            <input type="radio" name="delivery-speed" value="standard" style="accent-color: var(--primary); margin-top: 3px; transform: scale(1.15);" />
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <strong style="color: #0f172a; font-size: 0.95rem;">Standard Ground Shipping</strong>
+                <span class="delivery-date-pill" id="standard-date-pill">In 3 - 4 Business Days</span>
+              </div>
+              <div style="font-size: 0.84rem; color: #64748b; margin-top: 4px; line-height: 1.4;">
+                Economical surface shipping with reliable doorstep delivery across India.
+              </div>
+            </div>
+            <div style="margin-left: auto; text-align: right;">
+              <div id="standard-fee-display" style="font-weight: 800; font-size: 0.95rem; color: #0f172a;">₹49</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Step 3: Payment Method (Comprehensive Real-Time Fintech Suite) -->
+        <div class="checkout-step-box" id="step-3-payment-box">
+          <div class="checkout-step-header">
+            <div class="step-number-badge">3</div>
+            <div>
+              <h2 class="step-title">Payment Method</h2>
+              <p style="font-size: 0.825rem; color: var(--text-muted); margin: 0;">Select your preferred secure payment method with 256-Bit SSL Protection</p>
+            </div>
+          </div>
+
+          <!-- Option 1: Instant UPI / QR Code -->
+          <div class="checkout-payment-option selected" id="payment-card-upi">
+            <label class="payment-header-clickable">
+              <input type="radio" name="payment-method" value="Instant UPI" checked style="accent-color: var(--primary); transform: scale(1.15);" />
+              <div class="payment-method-icon-wrap" style="color: #2563eb; background: #eff6ff;">⚡</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <strong style="color: var(--text-main); font-size: 0.95rem;">Instant UPI / Dynamic QR Code</strong>
+                  <span style="font-size: 0.72rem; font-weight: 800; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 4px;">FASTEST &amp; RECOMMENDED</span>
+                </div>
+                <div style="font-size: 0.825rem; color: var(--text-muted); margin-top: 2px;">
+                  Google Pay, PhonePe, Paytm, BHIM, Cred, Amazon Pay &amp; Any UPI App
+                </div>
+              </div>
+            </label>
+
+            <!-- Expanded UPI Details -->
+            <div class="payment-details-expanded" id="upi-details-box">
+              <div class="upi-tabs-bar">
+                <button type="button" class="upi-tab-btn active" id="tab-upi-qr">📲 Scan Dynamic QR Code</button>
+                <button type="button" class="upi-tab-btn" id="tab-upi-vpa">🆔 Pay via UPI ID / VPA</button>
+              </div>
+
+              <!-- QR Code Sub-View -->
+              <div id="upi-qr-view">
+                <div class="upi-qr-display-card">
+                  <div style="font-size: 0.8rem; font-weight: 700; color: #475569; margin-bottom: 8px;">
+                    Scan with any UPI mobile application to approve payment
+                  </div>
+
+                  <div class="upi-qr-frame">
+                    <img id="dynamic-upi-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi%3A%2F%2Fpay%3Fpa%3Dshopora.pay%40icici%26pn%3DSHOPORA%20Commerce%26cu%3DINR" alt="Dynamic UPI QR Code" />
+                  </div>
+
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: #b45309; margin-top: 4px;">
+                    <span>⏱️ QR Valid for:</span>
+                    <span id="upi-timer-display" style="font-size: 0.9rem; color: #ea580c; font-weight: 800; font-family: monospace;">09:59</span>
+                  </div>
+
+                  <div class="upi-apps-strip">
+                    <span class="upi-app-badge">GPay</span>
+                    <span class="upi-app-badge">PhonePe</span>
+                    <span class="upi-app-badge">Paytm</span>
+                    <span class="upi-app-badge">BHIM</span>
+                    <span class="upi-app-badge">Cred</span>
+                  </div>
+
+                  <!-- Real-time simulation trigger for instant test/demo verification -->
+                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e2e8f0; width: 100%;">
+                    <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 6px;">
+                      📡 Real-time listener: <span id="upi-listener-status" style="color: #2563eb; font-weight: 700;">Waiting for payment from your bank app...</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-sm" id="btn-simulate-upi-approval" style="font-size: 0.775rem; font-weight: 700; border-color: #2563eb; color: #2563eb; width: 100%; margin-bottom: 10px;">
+                      Simulate Instant Bank UPI Approval ⚡
+                    </button>
+                    <button type="button" class="btn btn-primary btn-pay-now-inside" data-method="Instant UPI" style="width: 100%; padding: 12px; font-weight: 800; font-size: 0.95rem; border-radius: var(--radius-md);">
+                      ⚡ Pay with UPI &amp; Place Order
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VPA Input Sub-View -->
+              <div id="upi-vpa-view" style="display: none; padding: 12px 0;">
+                <label class="form-label" for="upi-vpa-input">Enter Registered Virtual Payment Address (VPA)</label>
+                <div style="display: flex; gap: 10px;">
+                  <input type="text" id="upi-vpa-input" class="form-control" placeholder="e.g. mobile@upi or username@okhdfcbank" style="font-weight: 600;" />
+                  <button type="button" class="btn btn-primary" id="btn-verify-vpa" style="padding: 10px 18px; font-weight: 800; white-space: nowrap;">
+                    Verify &amp; Request
+                  </button>
+                </div>
+                <div id="vpa-verify-result" style="font-size: 0.8rem; font-weight: 700; color: #16a34a; margin-top: 6px; display: none;"></div>
+                <button type="button" class="btn btn-primary btn-pay-now-inside" data-method="Instant UPI" style="width: 100%; margin-top: 12px; padding: 12px; font-weight: 800; font-size: 0.95rem; border-radius: var(--radius-md);">
+                  ⚡ Request &amp; Place Order via UPI
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option 2: Cash on Delivery / Pay on Delivery -->
+          <div class="checkout-payment-option" id="payment-card-cod">
+            <label class="payment-header-clickable">
+              <input type="radio" name="payment-method" value="Cash on Delivery" style="accent-color: var(--primary); transform: scale(1.15);" />
+              <div class="payment-method-icon-wrap" style="color: #16a34a; background: #f0fdf4;">💵</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <strong style="color: var(--text-main); font-size: 0.95rem;">Cash on Delivery / Pay on Delivery</strong>
+                  <span style="font-size: 0.72rem; font-weight: 700; background: #f1f5f9; color: #475569; padding: 2px 8px; border-radius: 4px;">ZERO EXTRA FEE</span>
+                </div>
+                <div style="font-size: 0.825rem; color: var(--text-muted); margin-top: 2px;">
+                  Pay via Cash, Card, or UPI QR scan at your doorstep upon package arrival
+                </div>
+              </div>
+            </label>
+
+            <!-- Expanded COD Details -->
+            <div class="payment-details-expanded" id="cod-details-box">
+              <div style="background: #ffffff; border: 1.5px solid #dcfce7; border-radius: var(--radius-md); padding: 14px 18px; margin-top: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; color: #16a34a; font-weight: 800; font-size: 0.85rem; margin-bottom: 4px;">
+                  <span>🛡️</span> Verified Doorstep Handover Guarantee
+                </div>
+                <p style="font-size: 0.825rem; color: #475569; margin: 0; line-height: 1.5;">
+                  You will receive a 4-digit security PIN via SMS before delivery. Share the PIN only after inspecting the package seal with our delivery associate.
+                </p>
+                <button type="button" class="btn btn-primary btn-pay-now-inside" data-method="Cash on Delivery" style="width: 100%; margin-top: 14px; padding: 12px; font-weight: 800; font-size: 0.95rem; background: #16a34a; border-color: #16a34a; border-radius: var(--radius-md);">
+                  💵 Confirm &amp; Place Order with Cash on Delivery
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option 3: Credit / Debit / ATM Card with Live Preview -->
+          <div class="checkout-payment-option" id="payment-card-card">
+            <label class="payment-header-clickable">
+              <input type="radio" name="payment-method" value="Credit/Debit Card" style="accent-color: var(--primary); transform: scale(1.15);" />
+              <div class="payment-method-icon-wrap" style="color: #6366f1; background: #eef2ff;">💳</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <strong style="color: var(--text-main); font-size: 0.95rem;">Credit / Debit / ATM Card</strong>
+                  <span style="font-size: 0.72rem; font-weight: 700; background: #e0e7ff; color: #3730a3; padding: 2px 8px; border-radius: 4px;">INSTANT GATEWAY</span>
+                </div>
+                <div style="font-size: 0.825rem; color: var(--text-muted); margin-top: 2px;">
+                  Visa, Mastercard, RuPay, American Express &amp; Maestro
+                </div>
+              </div>
+            </label>
+
+            <!-- Expanded Card Interactive Details -->
+            <div class="payment-details-expanded" id="card-details-box">
+              <!-- Live Virtual Card Visual Mockup -->
+              <div class="live-card-preview-container">
+                <div class="virtual-credit-card" id="virtual-card-mockup">
+                  <div class="card-top-row">
+                    <div class="card-chip"></div>
+                    <div class="card-brand-logo" id="preview-card-brand">VISA</div>
+                  </div>
+                  <div class="card-number-preview" id="preview-card-number">
+                    •••• •••• •••• ••••
+                  </div>
+                  <div class="card-bottom-row">
+                    <div>
+                      <div class="card-holder-label">Card Holder</div>
+                      <div class="card-holder-val" id="preview-card-name">YOUR NAME</div>
+                    </div>
+                    <div>
+                      <div class="card-holder-label">Expires</div>
+                      <div class="card-expires-val" id="preview-card-exp">MM/YY</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Input Form -->
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="card-num-input">16-Digit Card Number</label>
+                  <input type="text" id="card-num-input" class="form-control" placeholder="4000 1234 5678 9010" maxlength="19" style="letter-spacing: 0.08em; font-weight: 700;" />
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="card-name-input">Cardholder Name</label>
+                  <input type="text" id="card-name-input" class="form-control" placeholder="Name as displayed on card" style="text-transform: uppercase;" />
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="card-exp-input">Valid Thru (MM/YY)</label>
+                    <input type="text" id="card-exp-input" class="form-control" placeholder="12/28" maxlength="5" style="text-align: center; font-weight: 700;" />
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="card-cvv-input">CVV / CVC</label>
+                    <input type="password" id="card-cvv-input" class="form-control" placeholder="•••" maxlength="4" style="text-align: center; font-weight: 700; letter-spacing: 0.1em;" />
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: #16a34a; font-weight: 600; margin-top: 4px;">
+                  <span>🔒 256-Bit SSL Encrypted | RBI 2-Factor Authentication Mandate Compliant</span>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-pay-now-inside" data-method="Credit/Debit Card" style="width: 100%; margin-top: 14px; padding: 12px; font-weight: 800; font-size: 0.95rem; border-radius: var(--radius-md);">
+                  💳 Pay with Card &amp; Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option 4: Net Banking -->
+          <div class="checkout-payment-option" id="payment-card-netbanking">
+            <label class="payment-header-clickable">
+              <input type="radio" name="payment-method" value="Net Banking" style="accent-color: var(--primary); transform: scale(1.15);" />
+              <div class="payment-method-icon-wrap" style="color: #0284c7; background: #e0f2fe;">🏦</div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <strong style="color: var(--text-main); font-size: 0.95rem;">Net Banking</strong>
+                  <span style="font-size: 0.72rem; font-weight: 700; background: #f1f5f9; color: #475569; padding: 2px 8px; border-radius: 4px;">ALL MAJOR BANKS</span>
+                </div>
+                <div style="font-size: 0.825rem; color: var(--text-muted); margin-top: 2px;">
+                  Transfer directly from your verified bank account via secure netbanking portal
+                </div>
+              </div>
+            </label>
+
+            <!-- Expanded Net Banking Details -->
+            <div class="payment-details-expanded" id="netbanking-details-box">
+              <div style="font-size: 0.825rem; font-weight: 700; color: #475569; margin-top: 10px; margin-bottom: 8px;">
+                Popular Indian Banks:
+              </div>
+              <div class="popular-banks-grid">
+                <div class="bank-select-chip selected" data-bank="HDFC Bank">
+                  <span>🏛️</span> HDFC Bank
+                </div>
+                <div class="bank-select-chip" data-bank="ICICI Bank">
+                  <span>🏛️</span> ICICI Bank
+                </div>
+                <div class="bank-select-chip" data-bank="State Bank of India">
+                  <span>🏛️</span> SBI
+                </div>
+                <div class="bank-select-chip" data-bank="Axis Bank">
+                  <span>🏛️</span> Axis Bank
+                </div>
+                <div class="bank-select-chip" data-bank="Kotak Bank">
+                  <span>🏛️</span> Kotak Bank
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 8px; margin-bottom: 0;">
+                <label class="form-label" for="all-banks-select">Or Select Other Bank:</label>
+                <select id="all-banks-select" class="form-control" style="font-size: 0.875rem;">
+                  <option value="">-- Choose from 50+ Available Banks --</option>
+                  <option value="Bank of Baroda">Bank of Baroda</option>
+                  <option value="Punjab National Bank">Punjab National Bank</option>
+                  <option value="Canara Bank">Canara Bank</option>
+                  <option value="Union Bank of India">Union Bank of India</option>
+                  <option value="IndusInd Bank">IndusInd Bank</option>
+                  <option value="Yes Bank">Yes Bank</option>
+                  <option value="Federal Bank">Federal Bank</option>
+                  <option value="IDFC First Bank">IDFC First Bank</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-pay-now-inside" data-method="Net Banking" style="width: 100%; margin-top: 14px; padding: 12px; font-weight: 800; font-size: 0.95rem; border-radius: var(--radius-md);">
+                🏛️ Pay via Net Banking &amp; Place Order
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Order Summary Column -->
+      <div>
+        <div class="cart-order-summary-card">
+          <!-- Pro Benefits Sidebar Banner (if not already Pro) -->
+          <div class="checkout-summary-pro-banner" id="chk-pro-summary-banner">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.2rem;">👑</span>
+              <strong style="font-size: 0.92rem; color: #fef08a;">SHOPORA PRO Privilege</strong>
+            </div>
+            <p style="font-size: 0.8rem; color: #e0e7ff; line-height: 1.4; margin-bottom: 10px;">
+              Get FREE Lightning Express Delivery and extra 5% member discount on this order!
+            </p>
+            <button type="button" class="btn btn-warning btn-sm" id="sidebar-pro-trial-btn" style="width: 100%; font-weight: 800; font-size: 0.8rem; padding: 8px;">
+              ⚡ Activate 30-Day Free Trial
+            </button>
+          </div>
+
+          <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">Items in Order</h3>
+
+          <div id="checkout-items-list" style="max-height: 240px; overflow-y: auto; margin-bottom: 16px;"></div>
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span style="font-weight: 700; color: var(--text-main);" id="chk-subtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery Fee</span>
+            <span style="font-weight: 700; color: #16a34a;" id="chk-shipping">FREE</span>
+          </div>
+          <div class="summary-row" id="chk-pro-discount-row" style="display: none;">
+            <span style="color: #b45309; font-weight: 700;">👑 Pro Member Discount (5%)</span>
+            <span style="font-weight: 800; color: #16a34a;" id="chk-pro-discount">-₹0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total Payable</span>
+            <span style="color: var(--primary);" id="chk-total">₹0</span>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <button type="button" class="btn btn-primary" id="place-order-submit-btn" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 800;">
+              🔒 Confirm &amp; Place Order
+            </button>
+          </div>
+
+          <div style="margin-top: 18px; text-align: center; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+            By placing your order, you agree to SHOPORA's Conditions of Use &amp; Sale.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Real-Time Full-Screen Order Processing & Celebration Modal Overlay -->
+  <div class="checkout-processing-overlay" id="checkout-processing-overlay">
+    <!-- Active Processing Card -->
+    <div class="processing-card" id="proc-card-active">
+      <div class="processing-spinner-ring"></div>
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Processing Your Verified Order</h3>
+      <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 18px;">Please do not refresh or close this window...</p>
+
+      <div class="processing-steps-list">
+        <div class="proc-step-item active" id="proc-step-1">
+          <div class="proc-step-icon" id="proc-icon-1">1</div>
+          <span id="proc-text-1">Securing items in fulfillment center...</span>
+        </div>
+        <div class="proc-step-item" id="proc-step-2">
+          <div class="proc-step-icon" id="proc-icon-2">2</div>
+          <span id="proc-text-2">Allocating priority express dispatch slot...</span>
+        </div>
+        <div class="proc-step-item" id="proc-step-3">
+          <div class="proc-step-icon" id="proc-icon-3">3</div>
+          <span id="proc-text-3">Verifying payment gateway authorization...</span>
+        </div>
+        <div class="proc-step-item" id="proc-step-4">
+          <div class="proc-step-icon" id="proc-icon-4">4</div>
+          <span id="proc-text-4">Order confirmed! Live GPS tracking generated!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Triumphant Order Placed Success Card (With Clear Action Buttons) -->
+    <div class="processing-card" id="order-success-view-card" style="display: none; max-width: 480px; text-align: center; padding: 36px 30px; animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 2.2rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 0 0 10px rgba(22, 163, 74, 0.15);">
+        ✓
+      </div>
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Order Confirmed!</h2>
+      <p style="font-size: 0.92rem; color: #64748b; margin-bottom: 20px;">
+        Thank you for shopping with SHOPORA. Your package is scheduled for priority dispatch.
+      </p>
+
+      <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Order Number</span>
+          <strong id="success-order-number" style="font-family: monospace; font-size: 0.95rem; color: var(--primary);">SHP-2026-000000</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Payment Method</span>
+          <span id="success-order-payment" style="font-size: 0.85rem; font-weight: 800; color: #16a34a; background: #dcfce7; padding: 2px 8px; border-radius: 4px;">Instant UPI</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Total Paid</span>
+          <strong id="success-order-total" style="font-size: 1.1rem; color: #0f172a; font-weight: 800;">₹0</strong>
+        </div>
+      </div>
+
+      <!-- Action Buttons to View Orders or Tracking -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="orders.html" id="btn-redirect-my-orders" class="btn btn-primary" style="padding: 14px 20px; font-size: 1rem; font-weight: 800; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);">
+          📦 View in My Orders &rarr;
+        </a>
+        <a href="order-tracking.html" id="btn-redirect-tracking" class="btn btn-outline" style="padding: 12px 20px; font-size: 0.925rem; font-weight: 700; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          📍 Track Live GPS Delivery &rarr;
+        </a>
+        <a href="products.html" style="font-size: 0.85rem; color: #64748b; font-weight: 700; text-decoration: underline; margin-top: 6px;">
+          🛍️ Continue Shopping
+        </a>
+      </div>
+
+      <div style="margin-top: 16px; font-size: 0.775rem; color: #94a3b8;">
+        Redirecting to your orders in <strong id="redirect-orders-countdown" style="color: var(--primary);">6</strong>s...
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/checkout.js"></script>
+</body>
+</html>
