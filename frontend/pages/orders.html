@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order History — SHOPORA</title>
+  <meta name="description" content="View your order history, download printable invoices, and track live deliveries on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .orders-layout {
+      max-width: 980px;
+      margin: 20px auto 60px;
+    }
+    .order-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+      transition: all var(--transition-fast);
+    }
+    .order-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+    .order-card-header {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .order-header-metric span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+    .order-header-metric strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.925rem;
+      font-weight: 800;
+    }
+    .order-card-body {
+      padding: 20px 24px;
+    }
+    .order-item-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .order-item-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .order-item-img {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-xs);
+      background: #ffffff;
+      object-fit: contain;
+      border: 1px solid var(--border-subtle);
+      padding: 4px;
+    }
+    .order-card-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container page-container orders-layout">
+    <div style="margin-bottom: 24px;">
+      <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Your Orders</h1>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Manage past purchases, track active shipments, and print official invoices</p>
+    </div>
+
+    <!-- Orders Target List -->
+    <div id="orders-list-target">
+      <div class="skeleton" style="height: 180px; border-radius: var(--radius-lg); margin-bottom: 16px;"></div>
+      <div class="skeleton" style="height: 180px; border-radius: var(--radius-lg);"></div>
+    </div>
+  </main>
+
+  <!-- Printable Invoice Modal -->
+  <div id="invoice-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; border-radius: var(--radius-lg); max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl); border: 1px solid var(--border-subtle); padding: 32px; position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Official Tax Invoice</h3>
+        <button id="close-invoice-btn" style="font-size: 1.5rem; color: var(--text-subtle); padding: 4px;">&times;</button>
+      </div>
+
+      <div id="invoice-printable-area"></div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+        <button class="btn btn-outline" id="print-invoice-btn">🖨️ Print Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/orders.js"></script>
+</body>
+</html>

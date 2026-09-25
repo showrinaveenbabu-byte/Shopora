@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart — SHOPORA</title>
+  <meta name="description" content="Review your items, apply savings, and checkout securely with fast delivery on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container page-container">
+    <div style="margin-bottom: 24px;">
+      <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em;">Shopping Cart</h1>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Review your selected items and proceed to secure checkout</p>
+    </div>
+
+    <!-- Active Cart Root -->
+    <div id="cart-root">
+      <div class="skeleton" style="height: 240px; border-radius: var(--radius-lg);"></div>
+    </div>
+  </main>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Components.renderNavbar('cart');
+      Components.renderFooter();
+
+      const cartRoot = document.getElementById('cart-root');
+
+      function renderCart() {
+        const items = Cart.getItems();
+
+        if (items.length === 0) {
+          cartRoot.innerHTML = `
+            <div style="text-align: center; padding: 70px 24px; background: #ffffff; border-radius: 16px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-xs);">
+              <div style="font-size: 4rem; margin-bottom: 16px;">🛒</div>
+              <h2 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Your cart is waiting for something great.</h2>
+              <p style="color: #64748b; max-width: 440px; margin: 0 auto 28px; font-size: 0.95rem;">
+                Explore our catalog to discover authentic electronics, laptops, home goods, and curated daily deals.
+              </p>
+              <a href="products.html" class="btn btn-primary" style="padding: 12px 28px;">Browse Products &rarr;</a>
+            </div>
+          `;
+          return;
+        }
+
+        const subtotal = Cart.getSubtotal();
+        const freeShippingThreshold = 999;
+        const shipping = subtotal >= freeShippingThreshold ? 0 : 99;
+        const total = subtotal + shipping;
+        const progressPct = Math.min(100, Math.round((subtotal / freeShippingThreshold) * 100));
+
+        cartRoot.innerHTML = `
+          <div class="cart-layout">
+            <!-- Items Column -->
+            <div class="cart-items-panel">
+              <!-- Free Shipping Progress -->
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--text-main);">
+                  <span>${subtotal >= freeShippingThreshold ? '🎉 You unlocked FREE Express Delivery!' : `Add ₹${Math.max(0, freeShippingThreshold - subtotal).toFixed(0)} more for FREE Express Delivery`}</span>
+                  <span style="color: var(--primary);">${progressPct}%</span>
+                </div>
+                <div style="height: 6px; background: var(--border-medium); border-radius: 999px; overflow: hidden; margin-top: 8px;">
+                  <div style="height: 100%; width: ${progressPct}%; background: var(--primary); transition: width 0.3s ease;"></div>
+                </div>
+              </div>
+
+              <!-- Item Cards -->
+              <div>
+                ${items
+                  .map((item) => {
+                    const pId = item._id || item.product;
+                    const unitPrice = item.price;
+                    return `
+                    <div class="cart-item-card" data-id="${pId}">
+                      <div class="cart-item-image-wrap">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="Utils.imgFallback(this)" />
+                      </div>
+
+                      <div class="cart-item-details-wrap">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                          ${item.brand ? `<span style="font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase;">${item.brand}</span>` : ''}
+                          <span class="shopora-assured-badge" style="padding: 1px 6px; font-size: 0.65rem;">Assured <span>✦</span></span>
+                        </div>
+                        <h3 style="font-size: 0.95rem; font-weight: 700; margin: 3px 0 6px; line-height: 1.35;">
+                          <a href="product-details.html?id=${pId}" style="color: var(--text-main);">${item.name}</a>
+                        </h3>
+                        <div style="font-size: 0.8rem; color: #16a34a; font-weight: 600; margin-bottom: 6px;">
+                          ⚡ FREE Delivery by Tomorrow, 9 PM
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">${Utils.formatPrice(unitPrice)} each</div>
+                        <div style="margin-top: 10px; display: flex; gap: 16px; align-items: center;">
+                          <button class="cart-move-wishlist" data-id="${pId}" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">
+                            ♥ Save for later
+                          </button>
+                          <span style="color: var(--border-medium);">|</span>
+                          <button class="cart-item-remove" data-id="${pId}" style="font-size: 0.8rem; color: var(--danger); font-weight: 700;">
+                            ✕ Remove
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="cart-item-action-wrap">
+                        <div style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">
+                          ${Utils.formatPrice(unitPrice * item.quantity)}
+                        </div>
+                        <div class="quantity-stepper">
+                          <button class="cart-qty-minus" data-id="${pId}" aria-label="Decrease quantity">-</button>
+                          <span>${item.quantity}</span>
+                          <button class="cart-qty-plus" data-id="${pId}" aria-label="Increase quantity">+</button>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                  })
+                  .join('')}
+              </div>
+            </div>
+
+            <!-- Summary Column -->
+            <div class="cart-order-summary-card">
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 18px;">Order Summary</h3>
+              <div class="summary-row">
+                <span>Items Subtotal (${Cart.getCount()})</span>
+                <span style="font-weight: 700; color: var(--text-main);">${Utils.formatPrice(subtotal)}</span>
+              </div>
+              <div class="summary-row">
+                <span>Estimated Delivery</span>
+                <span style="font-weight: 700; color: ${shipping === 0 ? '#16a34a' : 'var(--text-main)'};">
+                  ${shipping === 0 ? 'FREE' : Utils.formatPrice(shipping)}
+                </span>
+              </div>
+              <div class="summary-row total">
+                <span>Total Amount</span>
+                <span style="color: var(--primary);">${Utils.formatPrice(total)}</span>
+              </div>
+
+              <div style="margin-top: 24px;">
+                <a href="checkout.html" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 800; letter-spacing: 0.02em;">
+                  Proceed to Checkout &rarr;
+                </a>
+              </div>
+
+              <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+                <div>🔒 256-Bit SSL Encrypted Checkout</div>
+                <div>🛡️ 100% Buyer Protection &amp; Doorstep Guarantee</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flipkart-Style Mobile Sticky Bottom Checkout Bar -->
+          <div class="cart-sticky-bottom-bar" id="cart-sticky-bottom-bar">
+            <div class="cart-sticky-bottom-inner">
+              <div>
+                <div style="font-size: 0.72rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Total Payable</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">${Utils.formatPrice(total)}</div>
+              </div>
+              <a href="checkout.html" class="btn-flipkart-buy" style="padding: 12px 28px; border-radius: 6px; font-weight: 800; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <span>PLACE ORDER</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        `;
+
+        attachCartEvents();
+      }
+
+      function attachCartEvents() {
+        // Quantity Minus
+        cartRoot.querySelectorAll('.cart-qty-minus').forEach((btn) => {
+          btn.onclick = async () => {
+            const pId = btn.dataset.id;
+            await Cart.decreaseQuantity(pId);
+            renderCart();
+          };
+        });
+
+        // Quantity Plus
+        cartRoot.querySelectorAll('.cart-qty-plus').forEach((btn) => {
+          btn.onclick = async () => {
+            const pId = btn.dataset.id;
+            await Cart.increaseQuantity(pId);
+            renderCart();
+          };
+        });
+
+        // Remove item
+        cartRoot.querySelectorAll('.cart-item-remove').forEach((btn) => {
+          btn.onclick = async () => {
+            const pId = btn.dataset.id;
+            await Cart.removeFromCart(pId);
+            Components.showToast('Item removed from cart', 'info');
+            renderCart();
+          };
+        });
+
+        // Save for later (Wishlist)
+        cartRoot.querySelectorAll('.cart-move-wishlist').forEach((btn) => {
+          btn.onclick = async () => {
+            const pId = btn.dataset.id;
+            const item = Cart.getItems().find((i) => (i._id || i.product) === pId);
+            if (item && window.Wishlist) {
+              await Wishlist.toggleWishlist(item);
+              await Cart.removeFromCart(pId);
+              Components.showToast(`Saved "${item.name}" to wishlist`, 'success');
+              renderCart();
+            }
+          };
+        });
+      }
+
+      renderCart();
+    });
+  </script>
+</body>
+</html>

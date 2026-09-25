@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Products — SHOPORA</title>
+  <meta name="description" content="Discover flagship smartphones, high-performance computing, audio equipment, fashion, and home essentials with verified quality on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container">
+    <!-- Breadcrumb strip -->
+    <div style="font-size: 0.8125rem; color: var(--text-muted); margin: 20px 0 8px; display: flex; gap: 6px; align-items: center;">
+      <a href="../index.html" style="color: var(--primary); font-weight: 600;">Home</a>
+      <span>/</span>
+      <span>Catalog</span>
+      <span id="breadcrumb-category-tag" style="display: none;">/ <strong style="color: var(--text-main);" id="breadcrumb-category-name"></strong></span>
+    </div>
+
+    <!-- Products Page Layout (Sidebar + Main Grid) -->
+    <div class="products-page-layout">
+      <!-- Filters Sidebar -->
+      <!-- Filters Sidebar -->
+      <aside class="filters-sidebar" id="filters-sidebar">
+        <div class="filter-header">
+          <span class="filter-title">Filters</span>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button id="clear-all-filters-btn" class="filter-clear-btn">Reset All</button>
+            <button id="mobile-filter-close-btn" class="btn btn-outline btn-sm" style="display: none; padding: 4px 10px; font-size: 0.8rem;" aria-label="Close Filters">&times; Close</button>
+          </div>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Departments</div>
+          <div class="filter-options-list" id="sidebar-categories-list">
+            <label class="filter-checkbox-label">
+              <input type="radio" name="cat-radio" value="All" checked />
+              <span>All Departments</span>
+            </label>
+            <!-- Injected via products.js -->
+          </div>
+        </div>
+
+        <!-- Brands Checklist -->
+        <div class="filter-section">
+          <div class="filter-section-title">Brand</div>
+          <div class="filter-options-list" id="sidebar-brands-list">
+            <!-- Dynamic Brand Checkboxes from DB -->
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Price Range (₹)</div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px;">
+            <input type="number" id="min-price" class="form-control" placeholder="Min" min="0" style="padding: 8px 10px; font-size: 0.85rem;" />
+            <span style="color: var(--text-muted);">-</span>
+            <input type="number" id="max-price" class="form-control" placeholder="Max" min="0" style="padding: 8px 10px; font-size: 0.85rem;" />
+          </div>
+          <button class="btn btn-outline" id="apply-price-btn" style="width: 100%; padding: 8px; font-size: 0.85rem;">Apply Price</button>
+        </div>
+
+        <!-- Customer Rating Filter -->
+        <div class="filter-section">
+          <div class="filter-section-title">Customer Review</div>
+          <div class="filter-options-list">
+            <label class="filter-checkbox-label">
+              <input type="radio" name="rating-filter" value="0" checked />
+              <span>All Ratings</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="radio" name="rating-filter" value="4.8" />
+              <span>★ 4.8 &amp; Up</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="radio" name="rating-filter" value="4.5" />
+              <span>★ 4.5 &amp; Up</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="radio" name="rating-filter" value="4.0" />
+              <span>★ 4.0 &amp; Up</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Special Collections & Availability -->
+        <div class="filter-section">
+          <div class="filter-section-title">Curated Collections</div>
+          <div class="filter-options-list">
+            <label class="filter-checkbox-label">
+              <input type="checkbox" id="filter-premium" />
+              <span>👑 SHOPORA Premium</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" id="filter-trending" />
+              <span>🔥 Trending Picks</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" id="filter-deals" />
+              <span>⚡ Flash &amp; Deals</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" id="filter-instock" />
+              <span>In Stock Only</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Products Content Area -->
+      <section class="products-main-content">
+        <!-- Top Toolbar -->
+        <div class="products-toolbar">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <button id="mobile-filter-open-btn" class="btn btn-outline btn-sm" style="display: none; padding: 7px 14px; font-size: 0.85rem;">
+              ⚡ Filters
+            </button>
+            <div class="products-count-text" id="results-count-display">
+              Loading products from database...
+            </div>
+          </div>
+
+          <div class="sort-select-wrap">
+            <label for="sort-dropdown">Sort by:</label>
+            <select id="sort-dropdown" class="sort-select">
+              <option value="newest">Featured / Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Avg. Customer Review</option>
+              <option value="popular">Popularity &amp; Best Sellers</option>
+              <option value="discount">Biggest Discount</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="catalog-products-grid">
+          <!-- Injected via products.js -->
+        </div>
+
+        <!-- Pagination Bar -->
+        <div class="pagination-wrap" id="pagination-controls" style="display: none;"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/products.js"></script>
+</body>
+</html>
