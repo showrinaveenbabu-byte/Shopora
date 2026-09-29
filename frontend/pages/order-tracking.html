@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Order Tracking — SHOPORA</title>
+  <meta name="description" content="Track your package fulfillment, dispatch, and delivery timeline in real time on SHOPORA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .tracking-layout {
+      max-width: 880px;
+      margin: 20px auto 60px;
+    }
+    .timeline-step-row {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .timeline-step-row:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-step-row::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 36px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-medium);
+    }
+    .timeline-step-row:last-child::before {
+      display: none;
+    }
+    .timeline-step-row.completed::before {
+      background: var(--primary);
+    }
+    .node-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      z-index: 2;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+    .timeline-step-row.completed .node-icon {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .timeline-step-row.active .node-icon {
+      border-color: var(--primary);
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-soft);
+    }
+    .node-content {
+      flex: 1;
+    }
+    .node-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .node-time {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .node-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flagship SHOPORA Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="container page-container tracking-layout">
+    <!-- Header with Lookup Input -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 18px;">
+        <div>
+          <h1 style="font-size: 1.65rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">Track Your Package</h1>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">
+            Monitor real-time fulfillment milestones, dispatch logs, and estimated doorstep arrival
+          </p>
+        </div>
+        <a href="orders.html" class="btn btn-outline" style="font-size: 0.875rem; font-weight: 700; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+          📦 View All Orders
+        </a>
+      </div>
+
+      <div style="display: flex; gap: 10px; max-width: 580px;">
+        <input
+          type="text"
+          id="tracking-input-id"
+          class="form-control"
+          placeholder="Enter Order Number or ID (e.g. SHP-2026-...)"
+          style="padding: 11px 16px;"
+        />
+        <button type="button" class="btn btn-primary" id="lookup-order-btn" style="flex-shrink: 0; padding: 11px 22px;">
+          Track &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Tracking Content Target -->
+    <div id="tracking-main-content">
+      <div class="skeleton" style="height: 380px; border-radius: var(--radius-xl);"></div>
+    </div>
+  </main>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Client-side Socket.IO & Core Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/order-tracking.js"></script>
+</body>
+</html>
