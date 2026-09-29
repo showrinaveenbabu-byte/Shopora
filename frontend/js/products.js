@@ -114,14 +114,26 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   async function loadSidebarBrands() {
     try {
-      const res = await API.get('/products?limit=100');
-      const products = res.data || [];
-      const brandSet = new Set();
-      products.forEach((p) => {
-        if (p.brand) brandSet.add(p.brand);
-      });
+      let brands = [];
+      try {
+        const brandsRes = await API.get('/products/brands');
+        if (brandsRes && Array.isArray(brandsRes.data) && brandsRes.data.length > 0) {
+          brands = brandsRes.data.map((b) => (typeof b === 'string' ? b : b.name)).filter(Boolean);
+        }
+      } catch (e) {
+        // Fallback to reading from products
+      }
 
-      const brands = Array.from(brandSet).sort();
+      if (brands.length === 0) {
+        const res = await API.get('/products?limit=50');
+        const products = res.data || [];
+        const brandSet = new Set();
+        products.forEach((p) => {
+          if (p.brand) brandSet.add(p.brand);
+        });
+        brands = Array.from(brandSet).sort();
+      }
+
       if (brandsList) {
         if (brands.length === 0) {
           brandsList.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-muted);">No brands available</span>`;
@@ -532,7 +544,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initial runs
   updateBreadcrumb();
-  await loadSidebarCategories();
-  await loadSidebarBrands();
-  await fetchProducts();
+
+  // Show skeletons immediately so user never sees an empty screen
+  if (productsGrid) {
+    productsGrid.innerHTML = Array(6)
+      .fill(0)
+      .map(
+        () => `
+      <div class="skeleton-card">
+        <div class="skeleton" style="width: 100%; height: 180px; margin-bottom: 14px;"></div>
+        <div class="skeleton" style="width: 60%; height: 16px; margin-bottom: 8px;"></div>
+        <div class="skeleton" style="width: 90%; height: 22px; margin-bottom: 12px;"></div>
+        <div class="skeleton" style="width: 40%; height: 24px; margin-top: auto;"></div>
+      </div>
+    `
+      )
+      .join('');
+  }
+
+  // Fetch concurrently for instant page load
+  await Promise.allSettled([
+    loadSidebarCategories(),
+    loadSidebarBrands(),
+    fetchProducts(),
+  ]);
 });
+

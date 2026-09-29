@@ -1,0 +1,2317 @@
+{
+  "categories": [
+    {
+      "_id": "6ab1406e86bd12f142ac00d0",
+      "name": "Mobiles & Tablets",
+      "slug": "mobiles-and-tablets",
+      "description": "Flagship smartphones, pro tablets, and cellular accessories with authentic warranty.",
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
+      "icon": "📱",
+      "isActive": true,
+      "displayOrder": 1,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.067Z",
+      "updatedAt": "2026-09-21T14:34:22.067Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d1",
+      "name": "Laptops & Computing",
+      "slug": "laptops-and-computing",
+      "description": "Workstations, ultrabooks, gaming rigs, and high-performance creative hardware.",
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop&q=80",
+      "icon": "💻",
+      "isActive": true,
+      "displayOrder": 2,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d2",
+      "name": "Audio & Headphones",
+      "slug": "audio-and-headphones",
+      "description": "Audiophile active noise-cancelling headphones, true wireless earbuds, and speakers.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80",
+      "icon": "🎧",
+      "isActive": true,
+      "displayOrder": 3,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d3",
+      "name": "Smart Home & Appliances",
+      "slug": "smart-home-and-appliances",
+      "description": "Intelligent espresso machines, robotic vacuums, climate care, and ambient living.",
+      "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&auto=format&fit=crop&q=80",
+      "icon": "🏠",
+      "isActive": true,
+      "displayOrder": 4,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d4",
+      "name": "Fashion & Apparel",
+      "slug": "fashion-and-apparel",
+      "description": "Designer apparel, tailored outerwear, luxury timepieces, and leather goods.",
+      "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&auto=format&fit=crop&q=80",
+      "icon": "👔",
+      "isActive": true,
+      "displayOrder": 5,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d5",
+      "name": "Footwear & Sneakers",
+      "slug": "footwear-and-sneakers",
+      "description": "Iconic performance running shoes, collectible sneakers, and casual streetwear.",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80",
+      "icon": "👟",
+      "isActive": true,
+      "displayOrder": 6,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d6",
+      "name": "Beauty & Personal Care",
+      "slug": "beauty-and-personal-care",
+      "description": "High-velocity styling dryers, ultrasonic skincare devices, and luxury grooming.",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80",
+      "icon": "✨",
+      "isActive": true,
+      "displayOrder": 7,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00d7",
+      "name": "Sports & Fitness",
+      "slug": "sports-and-fitness",
+      "description": "Aerodynamic cycling helmets, smart adjustable weights, and cardio equipment.",
+      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&auto=format&fit=crop&q=80",
+      "icon": "🏋️",
+      "isActive": true,
+      "displayOrder": 8,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.069Z",
+      "updatedAt": "2026-09-21T14:34:22.069Z"
+    }
+  ],
+  "products": [
+    {
+      "_id": "6ab1406e86bd12f142ac00db",
+      "name": "Apple iPhone 15 Pro Max (256GB Titanium)",
+      "brand": "Apple",
+      "category": "6ab1406e86bd12f142ac00d0",
+      "categoryName": "Mobiles & Tablets",
+      "subcategory": "Smartphones",
+      "description": "iPhone 15 Pro Max forged in aerospace-grade titanium with the groundbreaking A17 Pro chip and customizable Action button.",
+      "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1199.99,
+      "originalPrice": 1299.99,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.9,
+      "reviewCount": 384,
+      "stock": 35,
+      "sku": "APL-IP15PM-256",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Instant $100 off with select bank cards",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processor",
+          "value": "Apple A17 Pro (3nm)"
+        },
+        {
+          "key": "Display",
+          "value": "6.7-inch Super Retina XDR 120Hz OLED"
+        },
+        {
+          "key": "Camera",
+          "value": "48MP Main + 12MP 5x Telephoto + 12MP Ultra-Wide"
+        },
+        {
+          "key": "Build",
+          "value": "Aerospace-Grade Titanium Frame"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.146Z",
+      "updatedAt": "2026-09-21T14:34:22.146Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00dc",
+      "name": "Samsung Galaxy S24 Ultra AI (512GB Titanium Gray)",
+      "brand": "Samsung",
+      "category": "6ab1406e86bd12f142ac00d0",
+      "categoryName": "Mobiles & Tablets",
+      "subcategory": "Smartphones",
+      "description": "Meet Galaxy S24 Ultra with Galaxy AI, titanium shield exterior, and embedded Bluetooth S-Pen.",
+      "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1249.59,
+      "originalPrice": 1419.99,
+      "discount": 12,
+      "discountPercentage": 12,
+      "rating": 5,
+      "reviewCount": 1,
+      "stock": 20,
+      "sku": "SAM-S24U-512",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Includes complimentary Galaxy Buds FE and S-Pen",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processor",
+          "value": "Snapdragon 8 Gen 3 for Galaxy"
+        },
+        {
+          "key": "Display",
+          "value": "6.8-inch Dynamic AMOLED 2X QHD+ 2600 nits"
+        },
+        {
+          "key": "Camera",
+          "value": "200MP Quad Telephoto with 100x Space Zoom"
+        },
+        {
+          "key": "Battery",
+          "value": "5000 mAh with 45W Fast Charging"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.148Z",
+      "updatedAt": "2026-09-21T14:34:22.148Z",
+      "finalPrice": 1249.59,
+      "slug": "samsung-galaxy-s24-ultra-ai-512gb-titanium-gray",
+      "authenticityCertified": true,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00dd",
+      "name": "Google Pixel 8 Pro (128GB Obsidian Black)",
+      "brand": "Google",
+      "category": "6ab1406e86bd12f142ac00d0",
+      "categoryName": "Mobiles & Tablets",
+      "subcategory": "Smartphones",
+      "description": "Google Pixel 8 Pro is the all-pro phone engineered by Google with state-of-the-art computational photography.",
+      "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 799.99,
+      "originalPrice": 999.99,
+      "discount": 20,
+      "discountPercentage": 20,
+      "rating": 4.7,
+      "reviewCount": 175,
+      "stock": 20,
+      "sku": "GGL-PX8P-128",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Special Flash Deal: 20% off today only",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processor",
+          "value": "Google Tensor G3"
+        },
+        {
+          "key": "Display",
+          "value": "6.7-inch Super Actua OLED 1-120Hz"
+        },
+        {
+          "key": "Camera",
+          "value": "50MP Octa PD Main with Magic Editor"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-29T10:25:23.895Z",
+      "authenticityCertified": true,
+      "finalPrice": 799.99,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "slug": "google-pixel-8-pro-128gb-obsidian-black",
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00de",
+      "name": "Apple iPad Pro 13-inch M4 Ultra Retina XDR",
+      "brand": "Apple",
+      "category": "6ab1406e86bd12f142ac00d0",
+      "categoryName": "Mobiles & Tablets",
+      "subcategory": "Tablets",
+      "description": "The thinnest Apple product ever made, delivering insane performance with the M4 silicon and tandem OLED technology.",
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1301.07,
+      "originalPrice": 1399,
+      "discount": 7,
+      "discountPercentage": 7,
+      "rating": 4.9,
+      "reviewCount": 142,
+      "stock": 17,
+      "sku": "APL-IPAD13-M4",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Free Apple Pencil Pro compatible setup support",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Chipset",
+          "value": "Apple M4 Chip with 10-core GPU"
+        },
+        {
+          "key": "Display",
+          "value": "Tandem OLED Ultra Retina XDR"
+        },
+        {
+          "key": "Thickness",
+          "value": "Ultra-thin 5.1mm"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.148Z",
+      "updatedAt": "2026-09-21T14:34:22.148Z",
+      "authenticityCertified": true,
+      "finalPrice": 1301.07,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "slug": "apple-ipad-pro-13-inch-m4-ultra-retina-xdr",
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00df",
+      "name": "Samsung Galaxy Tab S9 Ultra (14.6-inch Dynamic AMOLED)",
+      "brand": "Samsung",
+      "category": "6ab1406e86bd12f142ac00d0",
+      "categoryName": "Mobiles & Tablets",
+      "subcategory": "Tablets",
+      "description": "Cinematic 14.6-inch tablet designed for elite creative multitasking and media immersion.",
+      "image": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 999.99,
+      "originalPrice": 1199.99,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.8,
+      "reviewCount": 98,
+      "stock": 15,
+      "sku": "SAM-TABS9U",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Includes S-Pen in box",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Screen",
+          "value": "14.6-inch Dynamic AMOLED 2X"
+        },
+        {
+          "key": "Water Resistance",
+          "value": "IP68 Certified"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.148Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e0",
+      "name": "Apple MacBook Pro 16-inch M3 Max (36GB / 1TB SSD)",
+      "brand": "Apple",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Laptops",
+      "description": "The ultimate powerhouse workstation for 3D animation, code compilation, and 8K video color grading.",
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 3499,
+      "originalPrice": 3799,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.9,
+      "reviewCount": 220,
+      "stock": 12,
+      "sku": "APL-MBP16-M3M",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Official 3-year AppleCare warranty included",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "CPU",
+          "value": "Apple M3 Max 14-Core CPU / 30-Core GPU"
+        },
+        {
+          "key": "Memory",
+          "value": "36GB Unified Memory"
+        },
+        {
+          "key": "Display",
+          "value": "Liquid Retina XDR with 1600 nits peak brightness"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.148Z",
+      "updatedAt": "2026-09-21T14:34:22.148Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e1",
+      "name": "Dell XPS 15 9530 InfinityEdge OLED Creator Edition",
+      "brand": "Dell",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Laptops",
+      "description": "CNC machined aluminum chassis paired with carbon fiber palm rests and breathtaking InfinityEdge visuals.",
+      "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1899.99,
+      "originalPrice": 2299.99,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.7,
+      "reviewCount": 160,
+      "stock": 14,
+      "sku": "DEL-XPS15-9530",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Save $400 this week on Creator Edition",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processor",
+          "value": "Intel Core i9-13900H (14 cores)"
+        },
+        {
+          "key": "GPU",
+          "value": "NVIDIA GeForce RTX 4070 8GB GDDR6"
+        },
+        {
+          "key": "Screen",
+          "value": "3.5K 3456x2160 OLED Touch Display"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.148Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e2",
+      "name": "ASUS ROG Zephyrus G16 OLED Gaming Laptop",
+      "brand": "ASUS",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Gaming Laptops",
+      "description": "Ultra-slim 1.49cm aluminum CNC gaming beast with ROG Nebula OLED display.",
+      "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 2199.99,
+      "originalPrice": 2499.99,
+      "discount": 12,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 110,
+      "stock": 10,
+      "sku": "ASU-ROG-G16",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "3 Months Xbox Game Pass Ultimate included",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processor",
+          "value": "Intel Core Ultra 9 185H"
+        },
+        {
+          "key": "Graphics",
+          "value": "NVIDIA RTX 4080 12GB"
+        },
+        {
+          "key": "Display",
+          "value": "2.5K 240Hz 0.2ms ROG Nebula OLED"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.148Z",
+      "updatedAt": "2026-09-21T14:34:22.148Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e3",
+      "name": "LG UltraGear 32-inch 4K OLED Gaming Monitor (240Hz)",
+      "brand": "LG",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Monitors",
+      "description": "World-first Dual-Hz OLED monitor allowing instant toggling between ultra-crisp 4K 240Hz and competitive 480Hz FHD.",
+      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1199.99,
+      "originalPrice": 1399.99,
+      "discount": 14,
+      "discountPercentage": 14,
+      "rating": 4.9,
+      "reviewCount": 75,
+      "stock": 8,
+      "sku": "LG-32GS95UE",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Dual-Hz Technology: switch between 4K 240Hz and FHD 480Hz",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Panel",
+          "value": "31.5-inch 4K UHD OLED 0.03ms"
+        },
+        {
+          "key": "Audio",
+          "value": "Pixel Sound Acoustic Screen"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.148Z",
+      "updatedAt": "2026-09-21T14:34:22.148Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e4",
+      "name": "Logitech MX Master 3S Wireless Performance Mouse",
+      "brand": "Logitech",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Accessories",
+      "description": "Iconic ergonomic tool with quiet clicks, cross-computer Flow control, and precision electromagnetic wheel.",
+      "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 99.99,
+      "originalPrice": 119.99,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.9,
+      "reviewCount": 520,
+      "stock": 45,
+      "sku": "LOG-MXM3S-GRY",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Best seller in productivity gear",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Sensor",
+          "value": "8000 DPI Darkfield Tracks on Glass"
+        },
+        {
+          "key": "Scroll Wheel",
+          "value": "MagSpeed Electromagnetic 1000 lines/sec"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e5",
+      "name": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
+      "brand": "Sony",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Over-Ear Headphones",
+      "description": "Industry-leading noise cancellation rewritten with dual processors and four beamforming mics for crystal clear calls.",
+      "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 348,
+      "originalPrice": 399.99,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 4.8,
+      "reviewCount": 410,
+      "stock": 30,
+      "sku": "SNY-WH1000XM5-BLK",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Special bundle: Free protective travel case",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Processors",
+          "value": "Integrated Processor V1 + HD QN1"
+        },
+        {
+          "key": "Microphones",
+          "value": "8 microphones with Auto NC Optimizer"
+        },
+        {
+          "key": "Battery",
+          "value": "30 hours with fast 3-min charge for 3 hours"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e6",
+      "name": "Bose QuietComfort Ultra Spatial Audio Headphones",
+      "brand": "Bose",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Over-Ear Headphones",
+      "description": "High-fidelity audio breakthrough featuring revolutionary spatialized audio that brings what you hear right in front of you.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 379,
+      "originalPrice": 429,
+      "discount": 12,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 280,
+      "stock": 25,
+      "sku": "BOS-QCU-WHT",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Bose Immersive Audio Spatial Experience",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Spatial Sound",
+          "value": "Bose Immersive Audio Technology"
+        },
+        {
+          "key": "Materials",
+          "value": "Ultra-plush protein leather ear cushions"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.149Z",
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e7",
+      "name": "Apple AirPods Pro (2nd Generation with USB-C)",
+      "brand": "Apple",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Earbuds",
+      "description": "Up to 2x more Active Noise Cancellation, Adaptive Audio, and Personalized Spatial Audio with dynamic head tracking.",
+      "image": "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 199.99,
+      "originalPrice": 249,
+      "discount": 20,
+      "discountPercentage": 20,
+      "rating": 4.9,
+      "reviewCount": 650,
+      "stock": 50,
+      "sku": "APL-APP2-USBC",
+      "isFeatured": true,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Save $50 on America’s top rated earbuds",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Chip",
+          "value": "Apple H2 Headphone Chip"
+        },
+        {
+          "key": "Case",
+          "value": "MagSafe Case (USB-C) with Speaker and Lanyard loop"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.149Z",
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e8",
+      "name": "Marshall Stanmore III Bluetooth Wireless Home Speaker",
+      "brand": "Marshall",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Speakers",
+      "description": "Re-engineered with a wider stereo soundstage and brass control knobs for pure analog tactile enjoyment.",
+      "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 329.99,
+      "originalPrice": 379.99,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 4.7,
+      "reviewCount": 135,
+      "stock": 14,
+      "sku": "MSH-STAN3-BLK",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "offerText": "Iconic vintage styling with modern room-filling stereo",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Amplification",
+          "value": "50 Watt Class D for Woofer + Two 15W for Tweeters"
+        },
+        {
+          "key": "Frequency",
+          "value": "45–20,000 Hz"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00e9",
+      "name": "Sennheiser Momentum True Wireless 4 Earbuds",
+      "brand": "Sennheiser",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Earbuds",
+      "description": "Audiophile grade acoustic architecture tuned for uncompromising frequency precision.",
+      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 248.96,
+      "originalPrice": 299.95,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.8,
+      "reviewCount": 92,
+      "stock": 17,
+      "sku": "SNH-MTW4-COP",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Snapdragon Sound and Lossless Audio Support",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Driver",
+          "value": "TrueResponse Transducer 7mm"
+        },
+        {
+          "key": "Codecs",
+          "value": "aptX Lossless, LE Audio, Auracast"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.149Z",
+      "updatedAt": "2026-09-21T14:34:22.149Z",
+      "authenticityCertified": true,
+      "finalPrice": 248.96,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "slug": "sennheiser-momentum-true-wireless-4-earbuds",
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ea",
+      "name": "Dyson V15 Detect Cordless Vacuum Cleaner",
+      "brand": "Dyson",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Vacuums",
+      "description": "Dyson’s most powerful, intelligent cordless vacuum with piezo sensor sizing and counting particles in real time.",
+      "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 649.99,
+      "originalPrice": 749.99,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 4.8,
+      "reviewCount": 310,
+      "stock": 16,
+      "sku": "DYS-V15-DET",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Laser illumination reveals microscopic dust on hard floors",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Suction Power",
+          "value": "240 Air Watts"
+        },
+        {
+          "key": "Filtration",
+          "value": "Whole-machine HEPA 99.99% to 0.3 microns"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00eb",
+      "name": "De’Longhi Magnifica S Fully Automatic Espresso Machine",
+      "brand": "De'Longhi",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Coffee & Kitchen",
+      "description": "Bean-to-cup luxury espresso, cappuccino, and latte with manual traditional milk frother steam wand.",
+      "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 799,
+      "originalPrice": 999,
+      "discount": 20,
+      "discountPercentage": 20,
+      "rating": 4.9,
+      "reviewCount": 240,
+      "stock": 11,
+      "sku": "DLG-MAG-S",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Includes 1kg Artisanal Italian Espresso Beans",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Pressure",
+          "value": "15 Bar Italian Pump"
+        },
+        {
+          "key": "Grinder",
+          "value": "Integrated Stainless Steel Conical Burr with 13 settings"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.149Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ec",
+      "name": "Philips Digital Airfryer XXL with Rapid Air Technology",
+      "brand": "Philips",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Coffee & Kitchen",
+      "description": "The healthiest way to fry with little to no added oil, crisping exterior while keeping interior succulent.",
+      "image": "https://images.unsplash.com/photo-1586208958839-06c17cacdf08?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1586208958839-06c17cacdf08?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 199.99,
+      "originalPrice": 249.99,
+      "discount": 20,
+      "discountPercentage": 20,
+      "rating": 4.8,
+      "reviewCount": 380,
+      "stock": 28,
+      "sku": "PHL-AF-XXL",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Fat Removal technology extracts excess fat for healthier meals",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Capacity",
+          "value": "7.3 Liters (Cooks whole chicken)"
+        },
+        {
+          "key": "Power",
+          "value": "2225 Watts Instant Heat"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.150Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ed",
+      "name": "iRobot Roomba j9+ Self-Emptying Robot Vacuum",
+      "brand": "iRobot",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Vacuums",
+      "description": "Identifies and avoids pet waste and cords, returning to its wood-finish dock to empty itself automatically.",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 699.99,
+      "originalPrice": 899.99,
+      "discount": 22,
+      "discountPercentage": 22,
+      "rating": 4.7,
+      "reviewCount": 165,
+      "stock": 9,
+      "sku": "IROB-J9P-AUTO",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Clean Base holds up to 60 days of debris",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Navigation",
+          "value": "PrecisionVision AI Obstacle Avoidance"
+        },
+        {
+          "key": "Suction",
+          "value": "100% more suction power than previous generation"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.150Z",
+      "updatedAt": "2026-09-21T14:34:22.150Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ee",
+      "name": "Philips Hue White and Color Ambiance Smart Starter Kit",
+      "brand": "Philips",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Smart Lighting",
+      "description": "Transform home ambience instantly with voice-controlled smart lighting syncable to music and screen entertainment.",
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 159.99,
+      "originalPrice": 199.99,
+      "discount": 20,
+      "discountPercentage": 20,
+      "rating": 4.8,
+      "reviewCount": 420,
+      "stock": 35,
+      "sku": "PHL-HUE-STRT4",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "16 Million Colors with Apple HomeKit & Alexa integration",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Pack",
+          "value": "4 Smart Bulbs + 1 Hue Bridge Hub"
+        },
+        {
+          "key": "Brightness",
+          "value": "1100 Lumens per bulb (75W equivalent)"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.150Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ef",
+      "name": "Omega Seamaster Diver 300M Co-Axial Master Chronometer",
+      "brand": "Omega",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Luxury Watches",
+      "description": "Legendary maritime timepiece chosen by secret agents and luxury collectors worldwide since 1993.",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 4900,
+      "originalPrice": 5400,
+      "discount": 9,
+      "discountPercentage": 9,
+      "rating": 4.9,
+      "reviewCount": 65,
+      "stock": 5,
+      "sku": "OMG-SM-300M",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "offerText": "5-year international manufacturer warranty & certificate",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Movement",
+          "value": "Omega Calibre 8800 Self-Winding"
+        },
+        {
+          "key": "Case Diameter",
+          "value": "42mm Stainless Steel with Ceramic Bezel"
+        },
+        {
+          "key": "Water Resistance",
+          "value": "300 meters / 1000 feet"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.150Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f0",
+      "name": "Ralph Lauren Slim Fit Oxford Cotton Shirt",
+      "brand": "Ralph Lauren",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Shirts",
+      "description": "An iconic staple of preppy American tailoring, crafted from breathable woven cotton with signature pony embroidery.",
+      "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 115,
+      "originalPrice": 145,
+      "discount": 21,
+      "discountPercentage": 21,
+      "rating": 4.7,
+      "reviewCount": 210,
+      "stock": 40,
+      "sku": "RL-OXF-SLM-BLU",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "100% Breathable Combed Cotton",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Material",
+          "value": "100% Oxford Weave Cotton"
+        },
+        {
+          "key": "Fit",
+          "value": "Tailored Slim Fit"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.150Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f1",
+      "name": "Bellroy Classic Leather Tech Backpack (20L)",
+      "brand": "Bellroy",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Bags & Accessories",
+      "description": "Clean silhouette designed for urban professionals with smart internal organization and contoured lumbar support.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 149,
+      "originalPrice": 179,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.8,
+      "reviewCount": 155,
+      "stock": 25,
+      "sku": "BEL-BKPK-20L",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Padded laptop pocket holds up to 16-inch MacBook",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Fabric",
+          "value": "Durable water-resistant woven fabric and eco-certified leather"
+        },
+        {
+          "key": "Capacity",
+          "value": "20 Liters"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f2",
+      "name": "Levi’s 511 Slim Fit Stretch Denim Jeans",
+      "brand": "Levi's",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Jeans",
+      "description": "A modern slim cut with room to move, upgraded with premium flex stretch for all-day mobility.",
+      "image": "https://images.unsplash.com/photo-1542272604-780c96856592?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1542272604-780c96856592?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 69.99,
+      "originalPrice": 89.99,
+      "discount": 22,
+      "discountPercentage": 22,
+      "rating": 4.7,
+      "reviewCount": 480,
+      "stock": 45,
+      "sku": "LEV-511-SLM",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Built with Levi’s Flex Advanced Stretch",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Material",
+          "value": "99% Cotton, 1% Elastane"
+        },
+        {
+          "key": "Leg Opening",
+          "value": "14.5-inch Slim"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f3",
+      "name": "Nike Air Jordan 1 Retro High OG (Chicago Reimagined)",
+      "brand": "Nike",
+      "category": "6ab1406e86bd12f142ac00d5",
+      "categoryName": "Footwear & Sneakers",
+      "subcategory": "Sneakers",
+      "description": "The Holy Grail of sneaker culture honoring the iconic 1985 silhouette with vintage aesthetic detailing.",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 180,
+      "originalPrice": 210,
+      "discount": 14,
+      "discountPercentage": 14,
+      "rating": 4.9,
+      "reviewCount": 520,
+      "stock": 20,
+      "sku": "NKE-AJ1-CHI",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "100% Verified Authentic Jordan Brand stock",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Upper",
+          "value": "Premium Aged Leather with Cracked Finish"
+        },
+        {
+          "key": "Cushioning",
+          "value": "Encapsulated Air-Sole Unit"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f4",
+      "name": "Adidas Ultraboost Light Running Shoes",
+      "brand": "Adidas",
+      "category": "6ab1406e86bd12f142ac00d5",
+      "categoryName": "Footwear & Sneakers",
+      "subcategory": "Running Shoes",
+      "description": "Experience epic energy return with adidas’s lightest Ultraboost yet, engineered for marathon endurance.",
+      "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 149.99,
+      "originalPrice": 189.99,
+      "discount": 21,
+      "discountPercentage": 21,
+      "rating": 4.8,
+      "reviewCount": 340,
+      "stock": 35,
+      "sku": "ADI-UBL-BLK",
+      "isFeatured": true,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "30% Lighter BOOST material with extreme energy return",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Midsole",
+          "value": "Light BOOST Foam"
+        },
+        {
+          "key": "Outsole",
+          "value": "Continental Better Rubber"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f5",
+      "name": "New Balance 990v6 Made in USA Heritage Sneaker",
+      "brand": "New Balance",
+      "category": "6ab1406e86bd12f142ac00d5",
+      "categoryName": "Footwear & Sneakers",
+      "subcategory": "Sneakers",
+      "description": "The flagship grey dad shoe elevated into ultra-comfortable high fashion with FuelCell propulsion technology.",
+      "image": "https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 199.99,
+      "originalPrice": 219.99,
+      "discount": 9,
+      "discountPercentage": 9,
+      "rating": 4.9,
+      "reviewCount": 190,
+      "stock": 18,
+      "sku": "NB-990V6-GRY",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Crafted in USA with domestic value of 70% or more",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Cushioning",
+          "value": "FuelCell Foam + ENCAP Midsole"
+        },
+        {
+          "key": "Upper",
+          "value": "Pigskin Suede and Mesh"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f6",
+      "name": "Dyson Supersonic Nural Intelligent Hair Dryer",
+      "brand": "Dyson",
+      "category": "6ab1406e86bd12f142ac00d6",
+      "categoryName": "Beauty & Personal Care",
+      "subcategory": "Hair Styling",
+      "description": "Intelligent heat control prevents extreme heat damage to preserve natural shine and protect scalp barrier.",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 500.49,
+      "originalPrice": 549.99,
+      "discount": 9,
+      "discountPercentage": 9,
+      "rating": 4.9,
+      "reviewCount": 180,
+      "stock": 9,
+      "sku": "DYS-NURL-TEAL",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Scalp Protect Mode automatically adjusts temperature",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Motor",
+          "value": "Dyson Digital Motor V9 (110,000 RPM)"
+        },
+        {
+          "key": "Sensors",
+          "value": "Time of Flight Scalp Distance Sensor"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z",
+      "authenticityCertified": true,
+      "finalPrice": 500.49,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "slug": "dyson-supersonic-nural-intelligent-hair-dryer",
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f7",
+      "name": "Oral-B iO Series 10 Rechargeable Electric Toothbrush",
+      "brand": "Oral-B",
+      "category": "6ab1406e86bd12f142ac00d6",
+      "categoryName": "Beauty & Personal Care",
+      "subcategory": "Oral Care",
+      "description": "Revolutionary magnetic iO technology delivers professional clean feeling and personalized real-time coaching.",
+      "image": "https://images.unsplash.com/photo-1559591937-e1032c7e0c4a?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1559591937-e1032c7e0c4a?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 299.99,
+      "originalPrice": 379.99,
+      "discount": 21,
+      "discountPercentage": 21,
+      "rating": 4.8,
+      "reviewCount": 220,
+      "stock": 22,
+      "sku": "ORB-IO10-BLK",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "iSense Smart Charger with live brushing guidance",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Action",
+          "value": "Micro-vibrating bristles with round head"
+        },
+        {
+          "key": "Modes",
+          "value": "7 Smart Cleaning Modes"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f8",
+      "name": "Bowflex SelectTech 552 Adjustable Dumbbells (Pair)",
+      "brand": "Bowflex",
+      "category": "6ab1406e86bd12f142ac00d7",
+      "categoryName": "Sports & Fitness",
+      "subcategory": "Fitness & Gym",
+      "description": "With just the turn of a dial, adjust resistance from 5 lbs up to 52.5 lbs per dumbbell for versatile home workouts.",
+      "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 379,
+      "originalPrice": 429,
+      "discount": 12,
+      "discountPercentage": 12,
+      "rating": 4.8,
+      "reviewCount": 310,
+      "stock": 12,
+      "sku": "BWF-ST552-PR",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": false,
+      "offerText": "Replaces 15 sets of weights in one compact system",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Weight Range",
+          "value": "5 to 52.5 lbs per dumbbell"
+        },
+        {
+          "key": "Dial System",
+          "value": "Rapid turn selection dial"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00f9",
+      "name": "Garmin Forerunner 965 AMOLED GPS Smartwatch",
+      "brand": "Garmin",
+      "category": "6ab1406e86bd12f142ac00d7",
+      "categoryName": "Sports & Fitness",
+      "subcategory": "Sports Tech",
+      "description": "Premium titanium running and triathlon smartwatch with brilliant AMOLED screen and advanced training dynamics.",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 549.99,
+      "originalPrice": 599.99,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.9,
+      "reviewCount": 145,
+      "stock": 16,
+      "sku": "GRM-FR965-BLK",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Titanium bezel with built-in full-color maps",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Screen",
+          "value": "1.4-inch AMOLED Touchscreen 454x454"
+        },
+        {
+          "key": "Battery",
+          "value": "Up to 23 days in smartwatch mode / 31 hrs in GPS"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00fa",
+      "name": "Theragun PRO Plus 6-in-1 Percussive Therapy Device",
+      "brand": "Therabody",
+      "category": "6ab1406e86bd12f142ac00d7",
+      "categoryName": "Sports & Fitness",
+      "subcategory": "Recovery",
+      "description": "Elite recovery tool used by world champions, combining 16mm percussive massage with infrared light and heart rate sensor.",
+      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 499,
+      "originalPrice": 599,
+      "discount": 17,
+      "discountPercentage": 17,
+      "rating": 4.8,
+      "reviewCount": 95,
+      "stock": 14,
+      "sku": "THB-PRO-PLUS",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Combines deep percussive therapy with near-infrared LED light",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Amplitude",
+          "value": "16mm deep muscle treatment"
+        },
+        {
+          "key": "Features",
+          "value": "Vibration therapy, thermal heat, and breathwork"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.151Z",
+      "updatedAt": "2026-09-21T14:34:22.151Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00fb",
+      "name": "Sony Alpha A7 IV Full-Frame Mirrorless Camera (Body)",
+      "brand": "Sony",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Cameras",
+      "description": "The benchmark hybrid mirrorless camera for breathtaking photography and cinematic video production.",
+      "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 2298,
+      "originalPrice": 2499.99,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.9,
+      "reviewCount": 165,
+      "stock": 7,
+      "sku": "SNY-A7M4-BODY",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "offerText": "33MP Exmor R CMOS Sensor with 4K 60p 10-bit recording",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Sensor",
+          "value": "33MP Full-Frame Exmor R"
+        },
+        {
+          "key": "Autofocus",
+          "value": "759 phase-detection points"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00fc",
+      "name": "Keychron Q1 Pro Wireless Custom Mechanical Keyboard",
+      "brand": "Keychron",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Keyboards",
+      "description": "Audiophile mechanical typing experience with South-facing RGB and Bluetooth 5.1 multi-device connectivity.",
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 200.09,
+      "originalPrice": 229.99,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 5,
+      "reviewCount": 1,
+      "stock": 21,
+      "sku": "KEY-Q1PRO-RD",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Full CNC Machined Aluminum Body with QMK/VIA support",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Structure",
+          "value": "Double Gasket Mount"
+        },
+        {
+          "key": "Switches",
+          "value": "Hot-swappable Gateron Jupiter Red"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.152Z",
+      "updatedAt": "2026-09-21T14:34:22.152Z",
+      "finalPrice": 200.09,
+      "slug": "keychron-q1-pro-wireless-custom-mechanical-keyboard",
+      "authenticityCertified": true,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00fd",
+      "name": "Sonos Move 2 Portable Smart Speaker with Spatial Audio",
+      "brand": "Sonos",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Speakers",
+      "description": "Stereo sound on the move with automatic Trueplay tuning adjusting sound to your exact outdoor or indoor surroundings.",
+      "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 399.61,
+      "originalPrice": 449,
+      "discount": 11,
+      "discountPercentage": 11,
+      "rating": 4.8,
+      "reviewCount": 115,
+      "stock": 5,
+      "sku": "SON-MOVE2-BLK",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": true,
+      "offerText": "Up to 24 hours of playback on a single charge",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Water Resistance",
+          "value": "IP56 Weatherproof"
+        },
+        {
+          "key": "Connectivity",
+          "value": "Wi-Fi 6 + Bluetooth 5.0"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.152Z",
+      "updatedAt": "2026-09-21T14:34:22.152Z",
+      "finalPrice": 399.61,
+      "slug": "sonos-move-2-portable-smart-speaker-with-spatial-audio",
+      "authenticityCertified": true,
+      "isLuxury": false,
+      "proExclusivePrice": 0,
+      "whiteGloveEligible": false
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00fe",
+      "name": "Nike Sportswear Tech Fleece Windrunner Full-Zip Hoodie",
+      "brand": "Nike",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Jackets",
+      "description": "Smooth on both sides, this Tech Fleece delivers premium lightweight thermal insulation without excess bulk.",
+      "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 125,
+      "originalPrice": 145,
+      "discount": 14,
+      "discountPercentage": 14,
+      "rating": 4.8,
+      "reviewCount": 310,
+      "stock": 35,
+      "sku": "NKE-TECH-FLC",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Lightweight warmth with signature chevron design lines",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Fabric",
+          "value": "53% Cotton, 47% Polyester Tech Fleece"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac00ff",
+      "name": "Birkenstock Boston Oiled Leather Clogs (Habana)",
+      "brand": "Birkenstock",
+      "category": "6ab1406e86bd12f142ac00d5",
+      "categoryName": "Footwear & Sneakers",
+      "subcategory": "Casual Shoes",
+      "description": "A legendary slip-on classic providing supreme orthopedic foot support and effortless European style.",
+      "image": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 155,
+      "originalPrice": 170,
+      "discount": 9,
+      "discountPercentage": 9,
+      "rating": 4.9,
+      "reviewCount": 420,
+      "stock": 24,
+      "sku": "BRK-BSTN-HBN",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": false,
+      "isNew": false,
+      "offerText": "Anatomically shaped original cork-latex footbed",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Upper",
+          "value": "Oiled Nubuck Leather"
+        },
+        {
+          "key": "Sole",
+          "value": "Flexible EVA"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac0100",
+      "name": "Breville Barista Touch Impress Espresso Machine",
+      "brand": "Breville",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Coffee & Kitchen",
+      "description": "Third-wave specialty coffee made simple with touchscreen swipe, real-time dosing feedback, and automated microfoam.",
+      "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1299.95,
+      "originalPrice": 1499.95,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 4.9,
+      "reviewCount": 88,
+      "stock": 8,
+      "sku": "BRV-BES881-SST",
+      "isFeatured": false,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": true,
+      "isNew": true,
+      "offerText": "Step-by-step barista guidance with automated microfoam",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "System",
+          "value": "ThermoJet 3-second heat up"
+        },
+        {
+          "key": "Tamping",
+          "value": "Assisted 10kg Tamp with 7° twist"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "createdAt": "2026-09-21T14:34:22.152Z",
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac0101",
+      "name": "Stanley Quencher H2.0 FlowState Insulated Tumbler (40oz)",
+      "brand": "Stanley",
+      "category": "6ab1406e86bd12f142ac00d7",
+      "categoryName": "Sports & Fitness",
+      "subcategory": "Hydration",
+      "description": "The viral hydration companion featuring double-wall vacuum insulation and comfort-grip handle.",
+      "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 45,
+      "originalPrice": 50,
+      "discount": 10,
+      "discountPercentage": 10,
+      "rating": 4.8,
+      "reviewCount": 890,
+      "stock": 60,
+      "sku": "STN-QNCH-40OZ",
+      "isFeatured": true,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Keeps beverages ice cold for up to 48 hours",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Material",
+          "value": "90% Recycled 18/8 Stainless Steel"
+        },
+        {
+          "key": "Lid",
+          "value": "FlowState 3-position rotating lid"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac0102",
+      "name": "Casio G-Shock GA-B2100 Tough Solar Bluetooth",
+      "brand": "Casio",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Watches",
+      "description": "The ultra-popular \"CasiOak\" octagonal design enhanced with Tough Solar power and automatic Bluetooth time sync.",
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 139.99,
+      "originalPrice": 160,
+      "discount": 13,
+      "discountPercentage": 13,
+      "rating": 4.8,
+      "reviewCount": 350,
+      "stock": 35,
+      "sku": "CAS-GAB2100-1A",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "Solar Powered with Smartphone Bluetooth link",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Structure",
+          "value": "Carbon Core Guard"
+        },
+        {
+          "key": "Water Resistance",
+          "value": "200M ISO"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab1406e86bd12f142ac0103",
+      "name": "Ninja Foodi Smart XL 6-in-1 Indoor Grill with Air Fry",
+      "brand": "Ninja",
+      "category": "6ab1406e86bd12f142ac00d3",
+      "categoryName": "Smart Home & Appliances",
+      "subcategory": "Kitchen Appliances",
+      "description": "Sear, sizzle, and air fry with the precision of a built-in Foodi thermometer for perfect doneness without guessing.",
+      "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 219.99,
+      "originalPrice": 279.99,
+      "discount": 21,
+      "discountPercentage": 21,
+      "rating": 4.8,
+      "reviewCount": 290,
+      "stock": 20,
+      "sku": "NNJ-FG551-GRL",
+      "isFeatured": false,
+      "isPremium": false,
+      "isTrending": true,
+      "isDeal": true,
+      "isNew": false,
+      "offerText": "500°F Cyclonic Grilling with Smart Cook Probe",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Functions",
+          "value": "Grill, Air Crisp, Roast, Bake, Broil, Dehydrate"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "__v": 0,
+      "updatedAt": "2026-09-21T14:34:22.152Z"
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff0fd",
+      "name": "Rolex Submariner Date 41mm Oystersteel & Cerachrom",
+      "brand": "Rolex",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Luxury Watches",
+      "description": "The archetype of the diver’s watch. Unwavering precision, crafted from corrosion-resistant Oystersteel with black Cerachrom ceramic bezel and Luminescent Chromalight display.",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 11500,
+      "originalPrice": 12500,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.95,
+      "reviewCount": 48,
+      "stock": 3,
+      "sku": "RLX-SUB-41MM",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 10877.5,
+      "offerText": "Includes Green Box, Physical Guarantee Card & 5-Year International Warranty",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Case Diameter",
+          "value": "41 mm Oystersteel"
+        },
+        {
+          "key": "Bezel",
+          "value": "Unidirectional rotatable 60-minute graduated Cerachrom"
+        },
+        {
+          "key": "Movement",
+          "value": "Calibre 3235, Manufacture Rolex (70-hr reserve)"
+        },
+        {
+          "key": "Water Resistance",
+          "value": "300 metres / 1,000 feet"
+        },
+        {
+          "key": "White-Glove",
+          "value": "Hand-delivered with Security PIN & Signature Seal"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.428Z",
+      "finalPrice": 11500,
+      "slug": "rolex-submariner-date-41mm-oystersteel-cerachrom",
+      "__v": 0
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff102",
+      "name": "Bang & Olufsen Beoplay H95 Flagship Titanium & Lambskin Headphones",
+      "brand": "Bang & Olufsen",
+      "category": "6ab1406e86bd12f142ac00d2",
+      "categoryName": "Audio & Headphones",
+      "subcategory": "Audiophile Tech",
+      "description": "Mastered for pure sound immersion. Celebrating 95 years of acoustic engineering, Beoplay H95 features custom titanium drivers and precision-crafted aluminum rotary dials.",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 1099.12,
+      "originalPrice": 1249,
+      "discount": 12,
+      "discountPercentage": 12,
+      "rating": 4.92,
+      "reviewCount": 84,
+      "stock": 8,
+      "sku": "BO-H95-TITANIUM",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 1044.05,
+      "offerText": "Includes Custom Aluminum Flight Case & Handcrafted Leather Cord Wrap",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Acoustic Driver",
+          "value": "Custom 40mm Titanium Drivers with Neodymium magnets"
+        },
+        {
+          "key": "Noise Cancellation",
+          "value": "Adaptive Active Noise Cancellation (5 Levels)"
+        },
+        {
+          "key": "Materials",
+          "value": "Brushed Aluminum, Soft Lambskin, Memory Foam"
+        },
+        {
+          "key": "Battery Life",
+          "value": "Up to 38 hours continuous ANC playback"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.441Z",
+      "finalPrice": 1099.12,
+      "slug": "bang-olufsen-beoplay-h95-flagship-titanium-lambskin-headphones",
+      "__v": 0
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff107",
+      "name": "Bottega Veneta Intrecciato Nappa Calfskin Duffle & Travel Bag",
+      "brand": "Bottega Veneta",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Designer Leather",
+      "description": "An iconic silhouette of quiet luxury. Hand-woven by Italian master artisans without extraneous logos, reflecting the pinnacle of understated modern elegance.",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 3956,
+      "originalPrice": 4300,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.88,
+      "reviewCount": 32,
+      "stock": 4,
+      "sku": "BV-INTREC-DUF",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 3752.5,
+      "offerText": "Handcrafted in Montebello Vicentino, Italy with Certificate of Provenance",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Material",
+          "value": "100% Hand-Woven Intrecciato Nappa Leather"
+        },
+        {
+          "key": "Hardware",
+          "value": "Matte Gunmetal Finish Solid Brass"
+        },
+        {
+          "key": "Dimensions",
+          "value": "50cm x 28cm x 24cm (Cabin Size Compliant)"
+        },
+        {
+          "key": "Lining",
+          "value": "Bonded Suede Sfumato with Zip Pocket"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.450Z",
+      "finalPrice": 3956,
+      "slug": "bottega-veneta-intrecciato-nappa-calfskin-duffle-travel-bag",
+      "__v": 0
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff10a",
+      "name": "Leica Q3 Full-Frame 60MP Compact Camera (Summilux 28mm f/1.7)",
+      "brand": "Leica",
+      "category": "6ab1406e86bd12f142ac00d1",
+      "categoryName": "Laptops & Computing",
+      "subcategory": "Audiophile Tech",
+      "description": "The definitive creative tool for fine art and documentary photography. Unmatched optical brilliance engineered in Wetzlar, Germany with wireless high-speed transfer.",
+      "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 5975.4,
+      "originalPrice": 6495,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.96,
+      "reviewCount": 51,
+      "stock": 5,
+      "sku": "LCA-Q3-60MP",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 5695.25,
+      "offerText": "Made in Germany. Includes Leica Leather Strap & Metal Lens Hood",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Sensor",
+          "value": "60.3 MP BSI CMOS Full-Frame (Triple Resolution Tech)"
+        },
+        {
+          "key": "Lens",
+          "value": "Fixed Leica Summilux 28mm f/1.7 ASPH. with Macro Mode"
+        },
+        {
+          "key": "Viewfinder",
+          "value": "5.76 MP OLED EVF with 120 fps"
+        },
+        {
+          "key": "Weather Sealing",
+          "value": "IP52 Ingress Protection Certification"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.499Z",
+      "finalPrice": 5975.4,
+      "slug": "leica-q3-full-frame-60mp-compact-camera-summilux-28mm-f-1-7",
+      "__v": 0
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff10d",
+      "name": "Maison Francis Kurkdjian Baccarat Rouge 540 Extrait de Parfum (200ml)",
+      "brand": "Maison Francis Kurkdjian",
+      "category": "6ab1406e86bd12f142ac00d6",
+      "categoryName": "Beauty & Personal Care",
+      "subcategory": "Haute Parfumerie",
+      "description": "A poetic alchemy born from the encounter between crystal and heat. Luminous, intense, and intoxicating with radiant cedarwood and ambergris accords.",
+      "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 897,
+      "originalPrice": 975,
+      "discount": 8,
+      "discountPercentage": 8,
+      "rating": 4.94,
+      "reviewCount": 165,
+      "stock": 12,
+      "sku": "MFK-BR540-EXT-200",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 850.25,
+      "offerText": "Hand-poured in Paris with 24K Red Flacon & Engraved Monogram Option",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Concentration",
+          "value": "Extrait de Parfum (Highest Perfume Oil Blend)"
+        },
+        {
+          "key": "Top Notes",
+          "value": "Bitter Almond from Morocco, Saffron"
+        },
+        {
+          "key": "Heart Notes",
+          "value": "Egyptian Jasmine Grandiflorum, Cedarwood"
+        },
+        {
+          "key": "Base Notes",
+          "value": "Ambergris, Woody Musks"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.512Z",
+      "finalPrice": 897,
+      "slug": "maison-francis-kurkdjian-baccarat-rouge-540-extrait-de-parfum-200ml",
+      "__v": 0
+    },
+    {
+      "_id": "6ab14fe34e0dc56793fff110",
+      "name": "Cartier Santos de Cartier 18K Yellow Gold & Steel Timepiece",
+      "brand": "Cartier",
+      "category": "6ab1406e86bd12f142ac00d4",
+      "categoryName": "Fashion & Apparel",
+      "subcategory": "Luxury Watches",
+      "description": "Designed in 1904 for aviator Alberto Santos-Dumont. The first modern wristwatch features rounded angles, seamless horn curves, and exposed screws that redefined watch design.",
+      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80"
+      ],
+      "price": 7812,
+      "originalPrice": 8400,
+      "discount": 7,
+      "discountPercentage": 7,
+      "rating": 4.93,
+      "reviewCount": 39,
+      "stock": 4,
+      "sku": "CRT-SNT-18K-LRG",
+      "isFeatured": true,
+      "isPremium": true,
+      "isTrending": false,
+      "isDeal": false,
+      "isNew": false,
+      "isLuxury": true,
+      "whiteGloveEligible": true,
+      "authenticityCertified": true,
+      "proExclusivePrice": 7457.5,
+      "offerText": "Includes Red Box, Tool for QuickSwitch Bracelet & Cartier Certificate",
+      "flashDealExpiresAt": null,
+      "specifications": [
+        {
+          "key": "Case",
+          "value": "39.8mm Steel with 18K Yellow Gold Bezel"
+        },
+        {
+          "key": "Crown",
+          "value": "7-Sided Crown Set with Faceted Blue Synthetic Spinel"
+        },
+        {
+          "key": "Movement",
+          "value": "Calibre 1847 MC Automatic Mechanical"
+        },
+        {
+          "key": "Bracelet",
+          "value": "SmartLink resize system + interchangeable calfskin strap"
+        }
+      ],
+      "deliveryTime": "Express Delivery in 2-4 Days",
+      "returnPolicy": "30 Days Free Doorstep Return & Exchange",
+      "isAvailable": true,
+      "updatedAt": "2026-09-21T15:40:19.524Z",
+      "finalPrice": 7812,
+      "slug": "cartier-santos-de-cartier-18k-yellow-gold-steel-timepiece",
+      "__v": 0
+    }
+  ]
+}

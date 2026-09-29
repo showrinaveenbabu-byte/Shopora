@@ -1,12 +1,46 @@
+const mongoose = require('mongoose');
 const Category = require('../models/Category');
 const Product = require('../models/Product');
+const fallback = require('../utils/catalogFallback');
+
+const isDBReady = () => mongoose && mongoose.connection && mongoose.connection.readyState === 1;
+
+const isDBError = (err) => {
+  if (!err) return false;
+  return (
+    !isDBReady() ||
+    err.name === 'MongooseError' ||
+    err.name === 'MongooseServerSelectionError' ||
+    err.name.includes('Mongo') ||
+    err.name.includes('ServerSelection') ||
+    err.name.includes('Timeout') ||
+    err.message.includes('buffering') ||
+    err.message.includes('timed out') ||
+    err.message.includes('connect') ||
+    err.message.includes('ECONNREFUSED')
+  );
+};
 
 // @desc    Get all active categories
 // @route   GET /api/categories
 // @access  Public
 const getCategories = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      return res.json({
+        success: true,
+        data: fallback.getCategoriesFallback(),
+      });
+    }
+
     const categories = await Category.find({ isActive: true }).sort({ displayOrder: 1, name: 1 });
+
+    if (categories.length === 0) {
+      return res.json({
+        success: true,
+        data: fallback.getCategoriesFallback(),
+      });
+    }
 
     // Also calculate product count for each category dynamically
     const categoriesWithCount = await Promise.all(
@@ -33,6 +67,12 @@ const getCategories = async (req, res, next) => {
       data: categoriesWithCount,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      return res.json({
+        success: true,
+        data: fallback.getCategoriesFallback(),
+      });
+    }
     next(error);
   }
 };
@@ -43,6 +83,18 @@ const getCategories = async (req, res, next) => {
 const getCategoryByIdOrSlug = async (req, res, next) => {
   try {
     const { idOrSlug } = req.params;
+
+    if (!isDBReady()) {
+      const cats = fallback.getCategoriesFallback();
+      const cat = cats.find(
+        (c) => String(c._id) === idOrSlug || (c.slug && c.slug.toLowerCase() === idOrSlug.toLowerCase())
+      );
+      if (!cat) {
+        return res.status(404).json({ success: false, message: 'Category not found' });
+      }
+      return res.json({ success: true, data: cat });
+    }
+
     let category;
 
     if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
@@ -52,6 +104,11 @@ const getCategoryByIdOrSlug = async (req, res, next) => {
     }
 
     if (!category) {
+      const cats = fallback.getCategoriesFallback();
+      const cat = cats.find(
+        (c) => String(c._id) === idOrSlug || (c.slug && c.slug.toLowerCase() === idOrSlug.toLowerCase())
+      );
+      if (cat) return res.json({ success: true, data: cat });
       return res.status(404).json({ success: false, message: 'Category not found' });
     }
 
@@ -67,6 +124,13 @@ const getCategoryByIdOrSlug = async (req, res, next) => {
       },
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const cats = fallback.getCategoriesFallback();
+      const cat = cats.find(
+        (c) => String(c._id) === req.params.idOrSlug || (c.slug && c.slug.toLowerCase() === req.params.idOrSlug.toLowerCase())
+      );
+      if (cat) return res.json({ success: true, data: cat });
+    }
     next(error);
   }
 };

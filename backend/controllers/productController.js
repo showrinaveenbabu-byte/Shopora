@@ -1,12 +1,36 @@
+const mongoose = require('mongoose');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const Offer = require('../models/Offer');
+const fallback = require('../utils/catalogFallback');
+
+const isDBReady = () => mongoose && mongoose.connection && mongoose.connection.readyState === 1;
+
+const isDBError = (err) => {
+  if (!err) return false;
+  return (
+    !isDBReady() ||
+    err.name === 'MongooseError' ||
+    err.name === 'MongooseServerSelectionError' ||
+    err.name.includes('Mongo') ||
+    err.name.includes('ServerSelection') ||
+    err.name.includes('Timeout') ||
+    err.message.includes('buffering') ||
+    err.message.includes('timed out') ||
+    err.message.includes('connect') ||
+    err.message.includes('ECONNREFUSED')
+  );
+};
 
 // @desc    Get all products with multi-filter, search, brand, sorting & pagination
 // @route   GET /api/products
 // @access  Public
 const getProducts = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      return res.json(fallback.filterProducts(req.query));
+    }
+
     const {
       search,
       category,
@@ -195,6 +219,12 @@ const getProducts = async (req, res, next) => {
     const skip = (pageNum - 1) * limitNum;
 
     const total = await Product.countDocuments(query);
+
+    // If database collection is empty and no specific query was made, provide fallback catalog
+    if (total === 0 && !search && (!category || category === 'All') && !brand && !minPrice && !maxPrice) {
+      return res.json(fallback.filterProducts(req.query));
+    }
+
     const products = await Product.find(query)
       .populate('category', 'name slug icon')
       .sort(sortOption)
@@ -210,6 +240,10 @@ const getProducts = async (req, res, next) => {
       data: products,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      console.warn('[Product Controller] Falling back to in-memory products due to DB error:', error.message);
+      return res.json(fallback.filterProducts(req.query));
+    }
     next(error);
   }
 };
@@ -222,6 +256,10 @@ const getSearchSuggestions = async (req, res, next) => {
     const { q } = req.query;
     if (!q || q.trim().length < 1) {
       return res.json({ success: true, data: [] });
+    }
+
+    if (!isDBReady()) {
+      return res.json({ success: true, data: fallback.getSuggestionsFallback(q) });
     }
 
     const regex = new RegExp(q.trim(), 'i');
@@ -237,6 +275,9 @@ const getSearchSuggestions = async (req, res, next) => {
       data: products,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      return res.json({ success: true, data: fallback.getSuggestionsFallback(req.query.q) });
+    }
     next(error);
   }
 };
@@ -246,17 +287,28 @@ const getSearchSuggestions = async (req, res, next) => {
 // @access  Public
 const getBrands = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      return res.json({ success: true, data: fallback.getBrandsFallback() });
+    }
+
     const brands = await Product.aggregate([
       { $group: { _id: '$brand', count: { $sum: 1 } } },
       { $project: { name: '$_id', count: 1, _id: 0 } },
       { $sort: { name: 1 } },
     ]);
 
+    if (!brands || brands.length === 0) {
+      return res.json({ success: true, data: fallback.getBrandsFallback() });
+    }
+
     res.json({
       success: true,
       data: brands,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      return res.json({ success: true, data: fallback.getBrandsFallback() });
+    }
     next(error);
   }
 };
@@ -266,6 +318,11 @@ const getBrands = async (req, res, next) => {
 // @access  Public
 const getDeals = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const deals = fallback.getDealsFallback(16);
+      return res.json({ success: true, data: deals, count: deals.length });
+    }
+
     let deals = await Product.find({ isDeal: true }).populate('category', 'name slug').limit(16);
     if (deals.length < 6) {
       deals = await Product.find({ discount: { $gte: 15 } })
@@ -274,12 +331,20 @@ const getDeals = async (req, res, next) => {
         .populate('category', 'name slug');
     }
 
+    if (deals.length === 0) {
+      deals = fallback.getDealsFallback(16);
+    }
+
     res.json({
       success: true,
       data: deals,
       count: deals.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const deals = fallback.getDealsFallback(16);
+      return res.json({ success: true, data: deals, count: deals.length });
+    }
     next(error);
   }
 };
@@ -289,6 +354,11 @@ const getDeals = async (req, res, next) => {
 // @access  Public
 const getFlashDeals = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const deals = fallback.getFlashDealsFallback(16);
+      return res.json({ success: true, data: deals, count: deals.length });
+    }
+
     let deals = await Product.find({ isDeal: true, discount: { $gte: 20 } })
       .populate('category', 'name slug')
       .limit(16);
@@ -298,12 +368,21 @@ const getFlashDeals = async (req, res, next) => {
         .limit(16)
         .populate('category', 'name slug');
     }
+
+    if (deals.length === 0) {
+      deals = fallback.getFlashDealsFallback(16);
+    }
+
     res.json({
       success: true,
       data: deals,
       count: deals.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const deals = fallback.getFlashDealsFallback(16);
+      return res.json({ success: true, data: deals, count: deals.length });
+    }
     next(error);
   }
 };
@@ -313,6 +392,11 @@ const getFlashDeals = async (req, res, next) => {
 // @access  Public
 const getPremiumProducts = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const prods = fallback.getPremiumFallback(16);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
+
     let products = await Product.find({ isPremium: true }).populate('category', 'name slug').limit(16);
     if (products.length < 6) {
       products = await Product.find({ price: { $gte: 150 } })
@@ -320,12 +404,21 @@ const getPremiumProducts = async (req, res, next) => {
         .limit(16)
         .populate('category', 'name slug');
     }
+
+    if (products.length === 0) {
+      products = fallback.getPremiumFallback(16);
+    }
+
     res.json({
       success: true,
       data: products,
       count: products.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const prods = fallback.getPremiumFallback(16);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
     next(error);
   }
 };
@@ -335,6 +428,11 @@ const getPremiumProducts = async (req, res, next) => {
 // @access  Public
 const getLuxuryProducts = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const prods = fallback.getPremiumFallback(24);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
+
     const { category, sort } = req.query;
     let query = {
       $or: [
@@ -358,9 +456,13 @@ const getLuxuryProducts = async (req, res, next) => {
 
     let products = await Product.find(query).sort(sortOption).populate('category', 'name slug').limit(24);
 
+    if (products.length === 0) {
+      products = fallback.getPremiumFallback(24);
+    }
+
     // Compute dynamic PRO member price (save 5% to 15%) and white glove flags
     const enriched = products.map((p) => {
-      const obj = p.toObject();
+      const obj = p.toObject ? p.toObject() : { ...p };
       obj.whiteGloveEligible = true;
       obj.authenticityCertified = true;
       const proSavings = Math.round(obj.price * 0.05 * 100) / 100;
@@ -375,6 +477,10 @@ const getLuxuryProducts = async (req, res, next) => {
       count: enriched.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const prods = fallback.getPremiumFallback(24);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
     next(error);
   }
 };
@@ -384,6 +490,11 @@ const getLuxuryProducts = async (req, res, next) => {
 // @access  Public
 const getTrendingProducts = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const prods = fallback.filterProducts({ isTrending: true, limit: 16 }).data;
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
+
     let products = await Product.find({ isTrending: true }).populate('category', 'name slug').limit(16);
     if (products.length < 6) {
       products = await Product.find()
@@ -391,12 +502,21 @@ const getTrendingProducts = async (req, res, next) => {
         .limit(16)
         .populate('category', 'name slug');
     }
+
+    if (products.length === 0) {
+      products = fallback.filterProducts({ isTrending: true, limit: 16 }).data;
+    }
+
     res.json({
       success: true,
       data: products,
       count: products.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const prods = fallback.filterProducts({ isTrending: true, limit: 16 }).data;
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
     next(error);
   }
 };
@@ -406,6 +526,11 @@ const getTrendingProducts = async (req, res, next) => {
 // @access  Public
 const getNewArrivals = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const prods = fallback.filterProducts({ isNew: true, limit: 16 }).data;
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
+
     let products = await Product.find({ isNew: true }).populate('category', 'name slug').limit(16);
     if (products.length < 6) {
       products = await Product.find()
@@ -413,12 +538,21 @@ const getNewArrivals = async (req, res, next) => {
         .limit(16)
         .populate('category', 'name slug');
     }
+
+    if (products.length === 0) {
+      products = fallback.filterProducts({ isNew: true, limit: 16 }).data;
+    }
+
     res.json({
       success: true,
       data: products,
       count: products.length,
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const prods = fallback.filterProducts({ isNew: true, limit: 16 }).data;
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
     next(error);
   }
 };
@@ -428,12 +562,26 @@ const getNewArrivals = async (req, res, next) => {
 // @access  Public
 const getFeaturedProducts = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const prods = fallback.getFeaturedFallback(16);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
+
     let products = await Product.find({ isFeatured: true }).populate('category', 'name slug').limit(16);
     if (products.length < 6) {
       products = await Product.find().sort({ rating: -1, reviewCount: -1 }).limit(16).populate('category', 'name slug');
     }
+
+    if (products.length === 0) {
+      products = fallback.getFeaturedFallback(16);
+    }
+
     res.json({ success: true, data: products, count: products.length });
   } catch (error) {
+    if (isDBError(error)) {
+      const prods = fallback.getFeaturedFallback(16);
+      return res.json({ success: true, data: prods, count: prods.length });
+    }
     next(error);
   }
 };
@@ -443,6 +591,12 @@ const getFeaturedProducts = async (req, res, next) => {
 // @access  Public
 const getProductById = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const found = fallback.getProductByIdFallback(req.params.id);
+      if (!found) return res.status(404).json({ success: false, message: 'Product not found' });
+      return res.json({ success: true, data: found.product, related: found.related });
+    }
+
     let product;
     if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       product = await Product.findById(req.params.id).populate('category', 'name slug icon');
@@ -451,6 +605,8 @@ const getProductById = async (req, res, next) => {
     }
 
     if (!product) {
+      const found = fallback.getProductByIdFallback(req.params.id);
+      if (found) return res.json({ success: true, data: found.product, related: found.related });
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
 
@@ -465,9 +621,13 @@ const getProductById = async (req, res, next) => {
     res.json({
       success: true,
       data: product,
-      related,
+      related: related.length > 0 ? related : (fallback.getProductByIdFallback(product._id) || {}).related || [],
     });
   } catch (error) {
+    if (isDBError(error)) {
+      const found = fallback.getProductByIdFallback(req.params.id);
+      if (found) return res.json({ success: true, data: found.product, related: found.related });
+    }
     next(error);
   }
 };

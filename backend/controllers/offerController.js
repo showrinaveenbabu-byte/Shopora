@@ -1,11 +1,24 @@
+const mongoose = require('mongoose');
 const Offer = require('../models/Offer');
 const Product = require('../models/Product');
+const fallback = require('../utils/catalogFallback');
+
+const isDBReady = () => mongoose && mongoose.connection && mongoose.connection.readyState === 1;
 
 // @desc    Get active promotional offers
 // @route   GET /api/offers/active
 // @access  Public
 const getActiveOffers = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const fallbackOffers = fallback.getOffersFallback();
+      return res.json({
+        success: true,
+        count: fallbackOffers.length,
+        data: fallbackOffers,
+      });
+    }
+
     const now = new Date();
     const offers = await Offer.find({
       isActive: true,
@@ -26,13 +39,28 @@ const getActiveOffers = async (req, res, next) => {
       return obj;
     });
 
+    if (sanitizedOffers.length === 0) {
+      const fallbackOffers = fallback.getOffersFallback();
+      return res.json({
+        success: true,
+        count: fallbackOffers.length,
+        data: fallbackOffers,
+      });
+    }
+
     res.json({
       success: true,
       count: sanitizedOffers.length,
       data: sanitizedOffers,
     });
   } catch (error) {
-    next(error);
+    console.warn('[Offer Controller] Falling back to in-memory offers due to error:', error.message);
+    const fallbackOffers = fallback.getOffersFallback();
+    return res.json({
+      success: true,
+      count: fallbackOffers.length,
+      data: fallbackOffers,
+    });
   }
 };
 
@@ -41,6 +69,12 @@ const getActiveOffers = async (req, res, next) => {
 // @access  Public
 const getOfferById = async (req, res, next) => {
   try {
+    if (!isDBReady()) {
+      const offer = fallback.getOfferByIdFallback(req.params.id);
+      if (!offer) return res.status(404).json({ success: false, message: 'Offer not found' });
+      return res.json({ success: true, data: offer });
+    }
+
     const offer = await Offer.findById(req.params.id).populate({
       path: 'products',
       select:
@@ -48,6 +82,8 @@ const getOfferById = async (req, res, next) => {
     });
 
     if (!offer) {
+      const fbOffer = fallback.getOfferByIdFallback(req.params.id);
+      if (fbOffer) return res.json({ success: true, data: fbOffer });
       return res.status(404).json({ success: false, message: 'Offer not found' });
     }
 
@@ -56,6 +92,8 @@ const getOfferById = async (req, res, next) => {
       data: offer,
     });
   } catch (error) {
+    const fbOffer = fallback.getOfferByIdFallback(req.params.id);
+    if (fbOffer) return res.json({ success: true, data: fbOffer });
     next(error);
   }
 };
