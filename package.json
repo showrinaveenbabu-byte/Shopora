@@ -11,6 +11,7 @@
     "test:api": "node backend/tests/api-test.js",
     "test:flows": "node backend/tests/flows-test.js",
     "test:pro": "node backend/tests/pro-test.js",
+    "test:vercel": "node backend/tests/verify-vercel-fix.js",
     "test": "node backend/tests/api-test.js && node backend/tests/flows-test.js && node backend/tests/pro-test.js"
   },
   "keywords": [

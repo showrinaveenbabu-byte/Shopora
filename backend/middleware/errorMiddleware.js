@@ -10,15 +10,18 @@ const errorHandler = (err, req, res, next) => {
 
   console.error(`[SHOPORA API Error ${statusCode}] ${req.method} ${req.originalUrl}:`, err.message);
 
-  // Mongoose connection or server selection error
+  // Mongoose connection, server selection, configuration, or bufferCommands errors
   if (
     err.name === 'MongooseServerSelectionError' ||
     err.name === 'MongoServerSelectionError' ||
     err.name === 'MongoNetworkError' ||
-    err.name === 'MongoTimeoutError'
+    err.name === 'MongoTimeoutError' ||
+    err.name === 'MongoConfigurationError' ||
+    (err.message && err.message.includes('bufferCommands = false')) ||
+    (err.message && err.message.includes('initial connection'))
   ) {
     statusCode = 503;
-    message = 'Database connection error. Ensure MONGODB_URI is configured and MongoDB Atlas allows access from all IPs (0.0.0.0/0).';
+    message = 'Database service unavailable. Please ensure MONGODB_URI is configured in Vercel project environment variables and MongoDB Atlas allows access from all IPs (0.0.0.0/0).';
   }
 
   // Mongoose bad ObjectId

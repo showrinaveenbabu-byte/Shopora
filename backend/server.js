@@ -23,8 +23,7 @@ const notificationRoutes = require('./routes/notificationRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const offerRoutes = require('./routes/offerRoutes');
 
-// Connect Database
-connectDB();
+// Express App Initialization
 
 const app = express();
 const server = http.createServer(app);
@@ -60,13 +59,29 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serverless / Cloud DB connection check middleware
 app.use(async (req, res, next) => {
-  if (req.path.startsWith('/api') && req.path !== '/api/health') {
+  // Always allow health checks through
+  if (req.path === '/api/health') {
+    return next();
+  }
+
+  if (req.path.startsWith('/api')) {
     try {
       await connectDB();
     } catch (e) {
-      // DB connection failed or offline; controllers can handle fallback gracefully
+      // Catalog routes have built-in fallback data (products, categories, offers)
+      const isCatalogRoute =
+        req.path.startsWith('/api/products') ||
+        req.path.startsWith('/api/categories') ||
+        req.path.startsWith('/api/offers');
+
+      if (!isCatalogRoute) {
+        return res.status(503).json({
+          success: false,
+          message: 'Database is currently unavailable. Please verify MONGODB_URI in Vercel environment variables and ensure MongoDB Atlas Network Access allows all IPs (0.0.0.0/0).',
+          error: process.env.NODE_ENV === 'production' ? undefined : e.message,
+        });
+      }
     }
   }
   next();
@@ -128,9 +143,18 @@ process.on('uncaughtException', (err) => {
 const PORT = process.env.PORT || 5050;
 
 if (require.main === module) {
-  server.listen(PORT, () => {
-    console.log(`[SHOPORA Server] Running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);
-  });
+  connectDB()
+    .then(() => {
+      server.listen(PORT, () => {
+        console.log(`[SHOPORA Server] Running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.warn(`[SHOPORA Server] DB startup warning: ${err.message}. Starting server with catalog fallback.`);
+      server.listen(PORT, () => {
+        console.log(`[SHOPORA Server] Running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);
+      });
+    });
 }
 
 module.exports = { app, server };

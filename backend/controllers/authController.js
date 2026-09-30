@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const connectDB = require('../config/db');
 
 const generateToken = (id) => {
   return jwt.sign(
@@ -14,6 +15,9 @@ const generateToken = (id) => {
 // @access  Public
 const registerUser = async (req, res, next) => {
   try {
+    // Ensure database connection is ready before querying or creating user
+    await connectDB();
+
     const { name, email, phone, password } = req.body;
 
     if (!name || !email || !password) {
@@ -73,6 +77,9 @@ const registerUser = async (req, res, next) => {
 // @access  Public
 const loginUser = async (req, res, next) => {
   try {
+    // Ensure database connection is ready before querying user
+    await connectDB();
+
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -134,6 +141,7 @@ const loginUser = async (req, res, next) => {
 // @access  Private
 const getMe = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
@@ -152,6 +160,7 @@ const getMe = async (req, res, next) => {
 // @access  Private
 const updateProfile = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id).select('+password');
 
     if (!user) {
@@ -203,6 +212,7 @@ const updateProfile = async (req, res, next) => {
 // @access  Private
 const getAddresses = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     res.json({
       success: true,
@@ -218,6 +228,7 @@ const getAddresses = async (req, res, next) => {
 // @access  Private
 const addAddress = async (req, res, next) => {
   try {
+    await connectDB();
     const fullName = (req.body.fullName || '').trim();
     const phone = (req.body.phone || '').trim();
     const addressLine1 = (req.body.addressLine1 || req.body.street || '').trim();
@@ -280,6 +291,7 @@ const addAddress = async (req, res, next) => {
 // @access  Private
 const updateAddress = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     const address = user.addresses.id(req.params.addressId);
 
@@ -318,6 +330,7 @@ const updateAddress = async (req, res, next) => {
 // @access  Private
 const deleteAddress = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     user.addresses.pull({ _id: req.params.addressId });
 
@@ -343,6 +356,7 @@ const deleteAddress = async (req, res, next) => {
 // @access  Private
 const setDefaultAddress = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     const address = user.addresses.id(req.params.addressId);
 
@@ -375,6 +389,7 @@ const setDefaultAddress = async (req, res, next) => {
 // @access  Private
 const activatePro = async (req, res, next) => {
   try {
+    await connectDB();
     const { plan = 'trial' } = req.body;
     const user = await User.findById(req.user._id);
 
@@ -435,6 +450,7 @@ const activatePro = async (req, res, next) => {
 // @access  Private
 const getProStatus = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
@@ -481,6 +497,7 @@ const getProStatus = async (req, res, next) => {
 // @access  Private
 const cancelPro = async (req, res, next) => {
   try {
+    await connectDB();
     const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
