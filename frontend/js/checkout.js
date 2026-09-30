@@ -944,6 +944,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const orderPayload = {
       items: items.map((i) => ({
         product: i._id || i.product,
+        name: i.name,
+        sku: i.sku || (typeof i.product === 'string' && !i.product.match(/^[0-9a-fA-F]{24}$/) ? i.product : undefined),
+        price: i.price,
+        image: i.image,
         quantity: i.quantity,
       })),
       shippingAddress: {

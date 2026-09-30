@@ -1,5 +1,6 @@
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
+const { resolveProduct } = require('../utils/productResolver');
 
 // @desc    Get current user cart
 // @route   GET /api/cart
@@ -42,7 +43,7 @@ const addToCart = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Product ID is required' });
     }
 
-    const product = await Product.findById(productId);
+    const product = await resolveProduct(productId, req.body);
     if (!product) {
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
@@ -56,11 +57,11 @@ const addToCart = async (req, res, next) => {
     if (!cart) {
       cart = await Cart.create({
         user: req.user._id,
-        items: [{ product: productId, quantity: Math.min(Number(quantity), product.stock) }],
+        items: [{ product: product._id, quantity: Math.min(Number(quantity), product.stock) }],
       });
     } else {
       const existingItemIndex = cart.items.findIndex(
-        (item) => item.product.toString() === productId
+        (item) => item.product && item.product.toString() === product._id.toString()
       );
 
       if (existingItemIndex > -1) {
@@ -68,7 +69,7 @@ const addToCart = async (req, res, next) => {
         cart.items[existingItemIndex].quantity = Math.min(newQty, product.stock);
       } else {
         cart.items.push({
-          product: productId,
+          product: product._id,
           quantity: Math.min(Number(quantity), product.stock),
         });
       }
@@ -99,11 +100,16 @@ const updateCartItemQuantity = async (req, res, next) => {
     const { productId } = req.params;
     const { quantity } = req.body;
 
-    if (quantity === undefined || Number(quantity) < 1) {
-      return res.status(400).json({ success: false, message: 'Valid quantity (>0) is required' });
+    if (quantity === undefined) {
+      return res.status(400).json({ success: false, message: 'Valid quantity is required' });
     }
 
-    const product = await Product.findById(productId);
+    const numQty = Number(quantity);
+    if (numQty <= 0) {
+      return removeFromCart(req, res, next);
+    }
+
+    const product = await resolveProduct(productId);
     if (!product) {
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
@@ -113,15 +119,16 @@ const updateCartItemQuantity = async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'Cart not found' });
     }
 
+    const targetIdStr = product._id.toString();
     const itemIndex = cart.items.findIndex(
-      (item) => item.product.toString() === productId
+      (item) => item.product && (item.product.toString() === targetIdStr || item.product.toString() === productId)
     );
 
     if (itemIndex === -1) {
       return res.status(404).json({ success: false, message: 'Item not in cart' });
     }
 
-    const desiredQty = Math.min(Number(quantity), product.stock);
+    const desiredQty = Math.min(numQty, product.stock !== undefined ? product.stock : 99);
     cart.items[itemIndex].quantity = desiredQty;
 
     await cart.save();
@@ -148,14 +155,35 @@ const removeFromCart = async (req, res, next) => {
   try {
     const { productId } = req.params;
 
-    let cart = await Cart.findOne({ user: req.user._id });
-    if (!cart) {
-      return res.status(404).json({ success: false, message: 'Cart not found' });
+    if (!productId) {
+      return res.status(400).json({ success: false, message: 'Product ID is required' });
     }
 
-    cart.items = cart.items.filter(
-      (item) => item.product.toString() !== productId
-    );
+    let cart = await Cart.findOne({ user: req.user._id });
+    if (!cart) {
+      return res.json({
+        success: true,
+        data: { user: req.user._id, items: [] },
+        message: 'Item removed from cart',
+      });
+    }
+
+    const resolved = await resolveProduct(productId).catch(() => null);
+    const resolvedId = resolved ? resolved._id.toString() : null;
+    const targetIdStr = String(productId).trim();
+
+    cart.items = cart.items.filter((item) => {
+      if (!item || !item.product) return false;
+      const pIdStr = (item.product._id || item.product).toString();
+      const itemIdStr = item._id ? item._id.toString() : '';
+
+      const isMatch =
+        pIdStr === targetIdStr ||
+        (resolvedId && pIdStr === resolvedId) ||
+        itemIdStr === targetIdStr;
+
+      return !isMatch;
+    });
 
     await cart.save();
 

@@ -3,6 +3,7 @@ const Product = require('../models/Product');
 const Category = require('../models/Category');
 const Offer = require('../models/Offer');
 const fallback = require('../utils/catalogFallback');
+const { ensureDefaultCatalog, persistFallbackProduct } = require('../utils/productResolver');
 
 const isDBReady = () => mongoose && mongoose.connection && mongoose.connection.readyState === 1;
 
@@ -220,8 +221,9 @@ const getProducts = async (req, res, next) => {
 
     const total = await Product.countDocuments(query);
 
-    // If database collection is empty and no specific query was made, provide fallback catalog
+    // If database collection is empty and no specific query was made, provide fallback catalog and trigger background seeding
     if (total === 0 && !search && (!category || category === 'All') && !brand && !minPrice && !maxPrice) {
+      ensureDefaultCatalog().catch((err) => console.warn('[Auto-Seed]', err.message));
       return res.json(fallback.filterProducts(req.query));
     }
 
@@ -606,7 +608,10 @@ const getProductById = async (req, res, next) => {
 
     if (!product) {
       const found = fallback.getProductByIdFallback(req.params.id);
-      if (found) return res.json({ success: true, data: found.product, related: found.related });
+      if (found) {
+        persistFallbackProduct(found.product).catch((err) => console.warn('[Persist Product]', err.message));
+        return res.json({ success: true, data: found.product, related: found.related });
+      }
       return res.status(404).json({ success: false, message: 'Product not found' });
     }
 

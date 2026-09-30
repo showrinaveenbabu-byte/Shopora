@@ -38,11 +38,20 @@
   <script src="../js/wishlist.js"></script>
   <script src="../js/components.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       Components.renderNavbar('cart');
       Components.renderFooter();
 
       const cartRoot = document.getElementById('cart-root');
+
+      // Sync with server if logged in, then render
+      if (window.Auth && Auth.isAuthenticated()) {
+        try {
+          await Cart.syncWithServer();
+        } catch (e) {
+          console.warn('[Cart Init Sync]', e);
+        }
+      }
 
       function renderCart() {
         const items = Cart.getItems();
@@ -107,11 +116,11 @@
                         </div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">${Utils.formatPrice(unitPrice)} each</div>
                         <div style="margin-top: 10px; display: flex; gap: 16px; align-items: center;">
-                          <button class="cart-move-wishlist" data-id="${pId}" style="font-size: 0.8rem; color: var(--primary); font-weight: 700;">
+                          <button class="cart-move-wishlist" data-id="${pId}" style="font-size: 0.8rem; color: var(--primary); font-weight: 700; background: none; border: none; cursor: pointer;">
                             ♥ Save for later
                           </button>
                           <span style="color: var(--border-medium);">|</span>
-                          <button class="cart-item-remove" data-id="${pId}" style="font-size: 0.8rem; color: var(--danger); font-weight: 700;">
+                          <button class="cart-item-remove" data-id="${pId}" style="font-size: 0.8rem; color: var(--danger); font-weight: 700; background: none; border: none; cursor: pointer;">
                             ✕ Remove
                           </button>
                         </div>
@@ -186,7 +195,9 @@
       function attachCartEvents() {
         // Quantity Minus
         cartRoot.querySelectorAll('.cart-qty-minus').forEach((btn) => {
-          btn.onclick = async () => {
+          btn.onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const pId = btn.dataset.id;
             await Cart.decreaseQuantity(pId);
             renderCart();
@@ -195,7 +206,9 @@
 
         // Quantity Plus
         cartRoot.querySelectorAll('.cart-qty-plus').forEach((btn) => {
-          btn.onclick = async () => {
+          btn.onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const pId = btn.dataset.id;
             await Cart.increaseQuantity(pId);
             renderCart();
@@ -204,29 +217,93 @@
 
         // Remove item
         cartRoot.querySelectorAll('.cart-item-remove').forEach((btn) => {
-          btn.onclick = async () => {
+          btn.onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const pId = btn.dataset.id;
-            await Cart.removeFromCart(pId);
-            Components.showToast('Item removed from cart', 'info');
+            const removed = await Cart.removeFromCart(pId);
+            const itemName = removed ? removed.name : 'Item';
+            if (window.Components) {
+              Components.showToast(`"${itemName}" removed from cart`, 'info');
+            }
             renderCart();
           };
         });
 
         // Save for later (Wishlist)
         cartRoot.querySelectorAll('.cart-move-wishlist').forEach((btn) => {
-          btn.onclick = async () => {
+          btn.onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const pId = btn.dataset.id;
             const item = Cart.getItems().find((i) => (i._id || i.product) === pId);
             if (item && window.Wishlist) {
               await Wishlist.toggleWishlist(item);
               await Cart.removeFromCart(pId);
-              Components.showToast(`Saved "${item.name}" to wishlist`, 'success');
+              if (window.Components) {
+                Components.showToast(`Saved "${item.name}" to wishlist`, 'success');
+              }
               renderCart();
             }
           };
         });
       }
 
+      // Event delegation on cartRoot for 100% click capture reliability
+      cartRoot.addEventListener('click', async (e) => {
+        const removeBtn = e.target.closest('.cart-item-remove');
+        if (removeBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const pId = removeBtn.dataset.id;
+          const removed = await Cart.removeFromCart(pId);
+          const itemName = removed ? removed.name : 'Item';
+          if (window.Components) {
+            Components.showToast(`"${itemName}" removed from cart`, 'info');
+          }
+          renderCart();
+          return;
+        }
+
+        const minusBtn = e.target.closest('.cart-qty-minus');
+        if (minusBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const pId = minusBtn.dataset.id;
+          await Cart.decreaseQuantity(pId);
+          renderCart();
+          return;
+        }
+
+        const plusBtn = e.target.closest('.cart-qty-plus');
+        if (plusBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const pId = plusBtn.dataset.id;
+          await Cart.increaseQuantity(pId);
+          renderCart();
+          return;
+        }
+
+        const wishlistBtn = e.target.closest('.cart-move-wishlist');
+        if (wishlistBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const pId = wishlistBtn.dataset.id;
+          const item = Cart.getItems().find((i) => String(i._id || i.product) === String(pId));
+          if (item && window.Wishlist) {
+            await Wishlist.toggleWishlist(item);
+            await Cart.removeFromCart(pId);
+            if (window.Components) {
+              Components.showToast(`Saved "${item.name}" to wishlist`, 'success');
+            }
+            renderCart();
+          }
+          return;
+        }
+      });
+
+      // Initial render
       renderCart();
     });
   </script>

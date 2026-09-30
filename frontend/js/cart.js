@@ -1,5 +1,5 @@
 /**
- * NovaMart — Shopping Cart Management (LocalStorage + Server Sync)
+ * SHOPORA (NovaMart) — Shopping Cart Management (LocalStorage + Server Sync)
  */
 
 const Cart = {
@@ -15,8 +15,11 @@ const Cart = {
   },
 
   saveItems(items) {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
-    window.dispatchEvent(new CustomEvent('cart:updated', { detail: { items } }));
+    const cleanItems = Array.isArray(items) ? items : [];
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cleanItems));
+    if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('cart:updated', { detail: { items: cleanItems } }));
+    }
   },
 
   getCount() {
@@ -34,65 +37,131 @@ const Cart = {
   },
 
   async addToCart(product, quantity = 1, showToastNotification = true) {
-    const items = this.getItems();
-    const productId = product._id || product.id;
-    const existingIndex = items.findIndex((i) => (i._id || i.product) === productId);
+    if (!product) return;
 
+    const items = this.getItems();
+    const productId = String(product._id || product.id || product.product || '').trim();
     const maxStock = product.stock !== undefined ? product.stock : 99;
+    const addQty = Math.max(1, Number(quantity) || 1);
+
+    const existingIndex = items.findIndex(
+      (i) => String(i._id || i.product || '').trim() === productId
+    );
 
     if (existingIndex > -1) {
-      const newQty = items[existingIndex].quantity + quantity;
+      const newQty = items[existingIndex].quantity + addQty;
       items[existingIndex].quantity = Math.min(newQty, maxStock);
     } else {
       items.push({
         _id: productId,
         product: productId,
-        name: product.name,
-        price: product.price,
-        originalPrice: product.originalPrice,
-        image: product.image,
+        name: product.name || 'Product',
+        brand: product.brand || 'SHOPORA',
+        price: Number(product.price) || 0,
+        originalPrice: Number(product.originalPrice) || Number(product.price) || 0,
+        image: product.image || (product.images && product.images[0]) || '',
         category: product.category,
-        stock: product.stock,
-        quantity: Math.min(quantity, maxStock),
+        stock: maxStock,
+        quantity: Math.min(addQty, maxStock),
       });
     }
 
     this.saveItems(items);
 
     // If logged in, sync to server in background
-    if (window.Auth && Auth.isAuthenticated()) {
+    if (typeof window !== 'undefined' && window.Auth && typeof window.Auth.isAuthenticated === 'function' && window.Auth.isAuthenticated()) {
       try {
-        await API.post('/cart', { productId, quantity });
+        if (window.API && typeof window.API.post === 'function') {
+          await window.API.post('/cart', { productId, quantity: addQty });
+        }
       } catch (err) {
         console.warn('[Cart Sync Warning]', err.message);
       }
     }
 
-    if (window.Components && showToastNotification) {
-      const isPages = window.location.pathname.includes('/pages/');
+    if (typeof window !== 'undefined' && window.Components && typeof window.Components.showToast === 'function' && showToastNotification) {
+      const isPages = window.location.pathname ? window.location.pathname.includes('/pages/') : false;
       const cartUrl = isPages ? 'cart.html' : 'pages/cart.html';
-      Components.showToast(`"${product.name}" added to cart!`, 'success', 4500, {
+      window.Components.showToast(`"${product.name || 'Product'}" added to cart!`, 'success', 4500, {
         text: 'Go to Cart ➔',
         url: cartUrl,
       });
     }
   },
 
-  async updateQuantity(productId, quantity) {
+  // Alias for addToCart
+  async addItem(product, quantity = 1, showToastNotification = true) {
+    return this.addToCart(product, quantity, showToastNotification);
+  },
+
+  /**
+   * Remove item from cart (both LocalStorage and Server)
+   */
+  async removeFromCart(productId, showToast = false) {
+    if (!productId) return null;
+
     let items = this.getItems();
-    const index = items.findIndex((i) => (i._id || i.product) === productId);
+    const targetId = String(productId).trim();
+
+    const itemToRemove = items.find(
+      (i) => String(i._id || i.product || '').trim() === targetId
+    );
+
+    // Filter out item immediately
+    items = items.filter(
+      (i) => String(i._id || i.product || '').trim() !== targetId
+    );
+    this.saveItems(items);
+
+    // Sync deletion to MongoDB if logged in
+    if (typeof window !== 'undefined' && window.Auth && typeof window.Auth.isAuthenticated === 'function' && window.Auth.isAuthenticated()) {
+      try {
+        if (window.API && typeof window.API.delete === 'function') {
+          await window.API.delete(`/cart/${encodeURIComponent(targetId)}`);
+        }
+      } catch (err) {
+        console.warn('[Cart Sync Warning]', err.message);
+      }
+    }
+
+    if (showToast && typeof window !== 'undefined' && window.Components && typeof window.Components.showToast === 'function' && itemToRemove) {
+      window.Components.showToast(`"${itemToRemove.name}" removed from cart`, 'info');
+    }
+
+    return itemToRemove;
+  },
+
+  // Alias for removeFromCart
+  async removeItem(productId, showToast = false) {
+    return this.removeFromCart(productId, showToast);
+  },
+
+  async updateQuantity(productId, quantity) {
+    if (!productId) return;
+
+    let items = this.getItems();
+    const targetId = String(productId).trim();
+    const index = items.findIndex(
+      (i) => String(i._id || i.product || '').trim() === targetId
+    );
 
     if (index > -1) {
-      if (quantity <= 0) {
-        return this.removeItem(productId);
+      const numQty = Number(quantity);
+      if (numQty <= 0) {
+        return this.removeFromCart(productId);
       }
-      const maxStock = items[index].stock || 99;
-      items[index].quantity = Math.min(quantity, maxStock);
+
+      const maxStock = items[index].stock !== undefined ? items[index].stock : 99;
+      items[index].quantity = Math.min(numQty, maxStock);
       this.saveItems(items);
 
-      if (window.Auth && Auth.isAuthenticated()) {
+      if (typeof window !== 'undefined' && window.Auth && typeof window.Auth.isAuthenticated === 'function' && window.Auth.isAuthenticated()) {
         try {
-          await API.put(`/cart/${productId}`, { quantity: items[index].quantity });
+          if (window.API && typeof window.API.put === 'function') {
+            await window.API.put(`/cart/${encodeURIComponent(targetId)}`, {
+              quantity: items[index].quantity,
+            });
+          }
         } catch (err) {
           console.warn('[Cart Sync Warning]', err.message);
         }
@@ -100,30 +169,45 @@ const Cart = {
     }
   },
 
-  async removeItem(productId) {
-    let items = this.getItems();
-    const itemToRemove = items.find((i) => (i._id || i.product) === productId);
-    items = items.filter((i) => (i._id || i.product) !== productId);
-    this.saveItems(items);
+  async decreaseQuantity(productId) {
+    if (!productId) return;
+    const items = this.getItems();
+    const targetId = String(productId).trim();
+    const item = items.find(
+      (i) => String(i._id || i.product || '').trim() === targetId
+    );
 
-    if (window.Auth && Auth.isAuthenticated()) {
-      try {
-        await API.delete(`/cart/${productId}`);
-      } catch (err) {
-        console.warn('[Cart Sync Warning]', err.message);
+    if (item) {
+      const currentQty = Number(item.quantity) || 1;
+      if (currentQty <= 1) {
+        return this.removeFromCart(productId);
       }
+      return this.updateQuantity(productId, currentQty - 1);
     }
+  },
 
-    if (window.Components && itemToRemove) {
-      Components.showToast(`"${itemToRemove.name}" removed from cart`, 'info');
+  async increaseQuantity(productId) {
+    if (!productId) return;
+    const items = this.getItems();
+    const targetId = String(productId).trim();
+    const item = items.find(
+      (i) => String(i._id || i.product || '').trim() === targetId
+    );
+
+    if (item) {
+      const currentQty = Number(item.quantity) || 1;
+      const maxStock = item.stock !== undefined ? item.stock : 99;
+      return this.updateQuantity(productId, Math.min(currentQty + 1, maxStock));
     }
   },
 
   async clear() {
     this.saveItems([]);
-    if (window.Auth && Auth.isAuthenticated()) {
+    if (typeof window !== 'undefined' && window.Auth && typeof window.Auth.isAuthenticated === 'function' && window.Auth.isAuthenticated()) {
       try {
-        await API.delete('/cart');
+        if (window.API && typeof window.API.delete === 'function') {
+          await window.API.delete('/cart');
+        }
       } catch (err) {
         console.warn('[Cart Sync Warning]', err.message);
       }
@@ -132,26 +216,32 @@ const Cart = {
 
   // Sync server cart into local cart upon login
   async syncWithServer() {
-    if (!window.Auth || !Auth.isAuthenticated()) return;
+    if (typeof window === 'undefined' || !window.Auth || typeof window.Auth.isAuthenticated !== 'function' || !window.Auth.isAuthenticated()) {
+      return;
+    }
 
     try {
-      const res = await API.get('/cart');
-      if (res.success && res.data && res.data.items) {
-        const serverItems = res.data.items.map((item) => {
-          const p = item.product;
-          return {
-            _id: p._id,
-            product: p._id,
-            name: p.name,
-            price: p.price,
-            originalPrice: p.originalPrice,
-            image: p.image,
-            category: p.category,
-            stock: p.stock,
-            quantity: item.quantity,
-          };
-        });
-        if (serverItems.length > 0) {
+      if (window.API && typeof window.API.get === 'function') {
+        const res = await window.API.get('/cart');
+        if (res.success && res.data && Array.isArray(res.data.items)) {
+          const serverItems = res.data.items
+            .filter((item) => item && item.product)
+            .map((item) => {
+              const p = item.product;
+              return {
+                _id: p._id || p,
+                product: p._id || p,
+                name: p.name || 'Product',
+                brand: p.brand || 'SHOPORA',
+                price: Number(p.price) || 0,
+                originalPrice: Number(p.originalPrice) || Number(p.price) || 0,
+                image: p.image || (p.images && p.images[0]) || '',
+                category: p.category,
+                stock: p.stock !== undefined ? p.stock : 50,
+                quantity: Number(item.quantity) || 1,
+              };
+            });
+
           this.saveItems(serverItems);
         }
       }
@@ -161,4 +251,9 @@ const Cart = {
   },
 };
 
-window.Cart = Cart;
+if (typeof window !== 'undefined') {
+  window.Cart = Cart;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Cart;
+}

@@ -1,7 +1,11 @@
+const mongoose = require('mongoose');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 const Cart = require('../models/Cart');
 const Notification = require('../models/Notification');
+const fallback = require('../utils/catalogFallback');
+const { resolveProduct } = require('../utils/productResolver');
 
 // Generate unique order number
 const generateOrderNumber = () => {
@@ -58,7 +62,7 @@ const createOrder = async (req, res, next) => {
 
     for (const item of items) {
       const productId = item.product || item._id;
-      const product = await Product.findById(productId);
+      const product = await resolveProduct(productId, item);
 
       if (!product) {
         return res.status(404).json({
